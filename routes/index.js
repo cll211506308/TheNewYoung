@@ -1,19 +1,40 @@
 const router = require('koa-router')()
+const ArticalController = require('../controller/ArticalController')
 
 router.get('/', async (ctx, next) => {
-  await ctx.render('index', {
-    title: 'Hello Koa 2!'
-  })
-})
+        await ArticalController.getEssay(ctx,next)
+    }
+  )
 
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
-})
+router.get('/search', async (ctx, next) => {
 
-router.get('/json', async (ctx, next) => {
-  ctx.body = {
-    title: 'koa2 json'
-  }
-})
+    }
+)
+
+router.get('/recommend', async (ctx, next) => {
+
+    }
+)
+
+router.get('/yangShengTang', async (ctx, next) => {
+
+    }
+)
+
+router.get('/diet', async (ctx, next) => {
+
+    }
+)
+
+router.get('/fitClass', async (ctx, next) => {
+
+    }
+)
+
+router.get('/hotEssay', async (ctx, next) => {
+
+    }
+)
+
 
 module.exports = router
