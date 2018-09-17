@@ -62,6 +62,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`artical` (
   `status` VARCHAR(10) NULL,
   `userid` INT NULL,
   `pageviews` INT NULL,
+  `title` VARCHAR(1000) NULL,
+  `articalClassification` VARCHAR(45) NULL,
   PRIMARY KEY (`articalid`))
 ENGINE = InnoDB;
 
