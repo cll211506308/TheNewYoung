@@ -1,4 +1,3 @@
-const DAO = require('../model/DAO')
 const ArticalDAO = require('../model/ArticalDAO');
 
 module.exports = {

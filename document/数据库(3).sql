@@ -161,6 +161,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`post` (
   `time` DATETIME NULL,
   `pageviews` INT NULL,
   `postcontent` BLOB NULL,
+  `postpic1` VARCHAR(100) NULL,
+  `postpic2` VARCHAR(100) NULL,
+  `postpic3` VARCHAR(100) NULL,
+  `postClassification` VARCHAR(45) NULL,
   PRIMARY KEY (`postid`))
 ENGINE = InnoDB;
 
