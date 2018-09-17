@@ -1,4 +1,4 @@
-insert into post (postid,userid,title,postabel,time,pageviews)
+﻿insert into post (postid,userid,title,postabel,time,pageviews)
 VALUES (1,1,"这是标题1","养胃","2018-09-17",300);
 insert into post (postid,userid,title,postabel,time,pageviews)
 VALUES (2,2,"这是标题2","养肝","2018-04-23",223);
@@ -108,15 +108,15 @@ INSERT INTO users ( userid, headpic, username,userpassword, telphone, autograph,
 VALUES
  	( 5, " ", "cbd", "123456", "1234567890", "刘亦菲", "女", "1995-10-21", "2018-09-17", "是" );
 
-insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews) values (1,"养生"," ","鲜牛奶消毒后经乳酸杆菌发酵而成。酸牛奶的凝块小，易消化，能刺激胃肠道消化酶分泌，同时有杀菌作用，适用于经常腹泻的婴幼儿。"," "," "," "," "," ","审核通过",1,200);
+insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews,title,articalClassification) values (1,"养生"," ","鲜牛奶消毒后经乳酸杆菌发酵而成。酸牛奶的凝块小，易消化，能刺激胃肠道消化酶分泌，同时有杀菌作用，适用于经常腹泻的婴幼儿。"," "," "," "," "," ","审核通过",1,200,"鲜牛奶消毒","营养美食");
 
-insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews) values (2,"饮食"," ","鲜牛奶消毒后经乳酸杆菌发酵而成。酸牛奶的凝块小，一些外部的因素也可引起宝宝腹泻，常见的有：饮食过量、长期营养不足或不平衡、天气太热或太凉、细菌或病毒感染等。"," "," "," "," "," ","审核通过",1,300);
+insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews,title,articalClassification) values (2,"饮食"," ","鲜牛奶消毒后经乳酸杆菌发酵而成。酸牛奶的凝块小，一些外部的因素也可引起宝宝腹泻，常见的有：饮食过量、长期营养不足或不平衡、天气太热或太凉、细菌或病毒感染等。"," "," "," "," "," ","审核通过",1,300,"乳酸杆菌","营养饮食");
 
-insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews) values (3,"健身"," ","取新鲜苹果一只切开，用金属小勺轻轻刮取。苹果的纤维较细，对肠道刺激小，富有碱性，含有果胶和鞣酸，有吸附和收敛作用，对腹泻治疗有益。"," "," "," "," "," ","审核通过",2,600);
+insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews,title,articalClassification) values (3,"健身"," ","取新鲜苹果一只切开，用金属小勺轻轻刮取。苹果的纤维较细，对肠道刺激小，富有碱性，含有果胶和鞣酸，有吸附和收敛作用，对腹泻治疗有益。"," "," "," "," "," ","审核通过",2,600,"新鲜苹果","健身课堂");
 
-insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews) values (4,"养生"," ","奶类制品是最适合宝宝消化和需要的食品，腹泻婴儿以母乳喂养者应继承喂母乳，没有母乳者可以用牛奶代替，一般就可以保证宝宝的营养需要。"," "," "," "," "," ","审核通过",3,700);
+insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews,title,articalClassification) values (4,"养生"," ","奶类制品是最适合宝宝消化和需要的食品，腹泻婴儿以母乳喂养者应继承喂母乳，没有母乳者可以用牛奶代替，一般就可以保证宝宝的营养需要。"," "," "," "," "," ","审核通过",3,700,"奶类制品","养生堂");
 
-insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews) values (5,"饮食"," ","婴幼儿腹泻多数是非感染性因素引起的，用抗生素治疗无效。"," "," "," "," "," ","审核通过",1,800);
+insert into artical(articalid,articallabel,coverpic,content,contentpic1,contentpic2,contentpic3,contentpic4,contentpic5,status,userid,pageviews,title,articalClassification) values (5,"饮食"," ","婴幼儿腹泻多数是非感染性因素引起的，用抗生素治疗无效。"," "," "," "," "," ","审核通过",1,800,"婴幼儿","营养饮食");
 
 insert into body(userid,time,bodyid,bodyclass,userheight,userweight)
 VALUES (1,"2018-7-8",1,"正常体质",1.65,56)
