@@ -3,7 +3,6 @@ var options = {
     port:3306,
     user:'root',
     password:'root',
-    database:''
+    database:'mydb'
 }
-
-module.exports.options= options;
+module.exports.options = options;
