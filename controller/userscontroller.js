@@ -1,4 +1,4 @@
-const usersDAO = require('../model/UsersDAO');
+const usersDAO = require('../model/usersDAO');
 module.exports = {
     // 用户名
     getUserName: async (ctx, next) => {
