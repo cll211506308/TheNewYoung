@@ -25,11 +25,12 @@ router.get('/collections/:userId', async (ctx, next) => {
 // router.get('/addcollections/:userId', async (ctx, next) => {
 //     await usersController.AddCollections(ctx,next);
 // });
-//显示发布过的文章（增，删，查）
-router.get('/publish',  async (ctx, next) => {
 
-})
-//折线图反应用户的体重变化
+//显示发布过的文章（增，删，查）
+router.get('/publish/:userId',  async (ctx, next) => {
+        await usersController.getUserPublish(ctx,next);
+    });
+//获取用户体重变化
 router.get('/weight', async (ctx, next) => {
 
 });

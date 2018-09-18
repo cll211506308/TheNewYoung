@@ -121,7 +121,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`comments` (
   `commentsid` INT NOT NULL AUTO_INCREMENT,
   `postid` INT NULL,
-  `username` VARCHAR(45) NULL,
+  `userid` INT NULL,
   `comcontent` TEXT NULL,
   `time` DATETIME NULL,
   PRIMARY KEY (`commentsid`))
