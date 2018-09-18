@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`artical` (
   `articalid` INT NOT NULL AUTO_INCREMENT,
   `articallabel` VARCHAR(45) NULL,
   `coverpic` VARCHAR(45) NULL,
-  `content` BLOB NULL,
+  `content` TEXT NULL,
   `contentpic1` VARCHAR(45) NULL,
   `contentpic2` VARCHAR(45) NULL,
   `contentpic3` VARCHAR(45) NULL,
@@ -109,7 +109,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Bigsuggestions` (
   `bigsuggestionsid` INT NOT NULL AUTO_INCREMENT,
-  `sugcontent` BLOB NULL,
+  `sugcontent` TEXT NULL,
   `bodyclassified` CHAR(45) NULL,
   PRIMARY KEY (`bigsuggestionsid`))
 ENGINE = InnoDB;
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`comments` (
   `commentsid` INT NOT NULL AUTO_INCREMENT,
   `postid` INT NULL,
   `username` VARCHAR(45) NULL,
-  `comcontent` BLOB NULL,
+  `comcontent` TEXT NULL,
   `time` DATETIME NULL,
   PRIMARY KEY (`commentsid`))
 ENGINE = InnoDB;
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`post` (
   `postabel` VARCHAR(10) NULL,
   `time` DATETIME NULL,
   `pageviews` INT NULL,
-  `postcontent` BLOB NULL,
+  `postcontent` TEXT NULL,
   `postpic1` VARCHAR(100) NULL,
   `postpic2` VARCHAR(100) NULL,
   `postpic3` VARCHAR(100) NULL,
