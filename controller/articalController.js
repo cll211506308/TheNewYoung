@@ -41,6 +41,15 @@ module.exports = {
         }catch(e){
             ctx.body = {'code':500,"message":"没有获取到相应文章 ！！" + e.message, data:[]}
         }
+    },
+    // 删除文章(CLL)
+    deleteartical:async (ctx, next) => {
+        let userDetails =  await articalDAO.deleteArtical(ctx.params.articalId);
+        try{
+            ctx.body = {"code":"200","message":"ok,删除成功",data:[]};
+        }catch (e) {
+            ctx.body = {"code":"500","message":"服务器错误",data:[]};
+        }
     }
 
 

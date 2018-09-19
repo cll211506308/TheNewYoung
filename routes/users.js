@@ -2,18 +2,17 @@ const router = require('koa-router')()
 const usersController = require('../controller/usersController');
 const bodyController = require('../controller/bodyController');
 const suggestionController = require('../controller/suggestionController');
+const articalController = require('../controller/articalController');
 router.prefix('/users');
 
 //获取用户信息
 router.get('/', async (ctx,next) => {
     await usersController.getUsers(ctx,next);
 })
-
 //注册
 router.post('/setUp', async (ctx,next) => {
     await usersController.setUp(ctx,next)
 });
-
 //显示用户的昵称
 router.get('/username/:userId',  async (ctx, next) => {
     await usersController.getUserName(ctx,next);
@@ -26,25 +25,24 @@ router.get('/headpic/:userId',  async (ctx, next) => {
 router.get('/autograph/:userId', async (ctx, next) => {
     await usersController.getUserautograph(ctx,next);
 });
+//获取用户身份
+router.get('/identity/:userId', async (ctx, next) => {
+    await usersController.getUseridentity(ctx,next);
+});
 //修改个人信息（昵称，头像，个性签名）
-
-//认证用户身份
-router.get('/identity', async (ctx, next) => {
+router.post('/updateusers', async (ctx,next) => {
 
 });
+//用户填写认证信息（将用户的认证信息存入用户表）
+router.post('/set', async (ctx,next) => {
 
-//显示收藏文章（查）
-router.get('/collections/:userId', async (ctx, next) => {
-    await usersController.getUserCollections(ctx,next);
 });
-//显示发布过的文章
-router.get('/publish/:userId',  async (ctx, next) => {
-        await usersController.getUserPublish(ctx,next);
-    });
-//增加发布过的文章
+//增加发布的文章(富文本编辑)
 
 //删除发布过的文章
-
+router.get('/deleteartical/:articalId', async (ctx,next) => {
+    await articalController.deleteartical(ctx,next);
+});
 //用户填写调查问卷（将用户身高，体重，体质类型存入body表）
 
 //获取用户体重变化
@@ -60,6 +58,7 @@ router.get('/suggestion/getsuggestions/:userId',  async (ctx, next) => {
     await suggestionController.getUsersuggestions(ctx,next);
 });
 //将提取的建议插入用户的建议表
+
 
 //页面查询建议表的建议显示
 router.get('/suggestion/showsuggestions/:userId',  async (ctx, next) => {
