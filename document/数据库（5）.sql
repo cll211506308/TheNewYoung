@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`body` (
   `userid` INT NULL,
   `time` DATETIME NULL,
   `bodyid` INT NOT NULL AUTO_INCREMENT,
-  `bodyclass` VARCHAR(5000) NULL,
+  `bodyclass` VARCHAR(50) NULL,
   `userheight` DOUBLE NULL,
   `userweight` DOUBLE NULL,
   PRIMARY KEY (`bodyid`))
@@ -110,7 +110,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Bigsuggestions` (
   `bigsuggestionsid` INT NOT NULL AUTO_INCREMENT,
   `sugcontent` TEXT NULL,
-  `bodyclassified` CHAR(45) NULL,
+  `bodyclass` CHAR(50) NULL,
+  `Bigsuggestionscol` VARCHAR(45) NULL,
   PRIMARY KEY (`bigsuggestionsid`))
 ENGINE = InnoDB;
 

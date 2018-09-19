@@ -1,6 +1,16 @@
 var DAO = require('../model/DAO');
 
 class DB {
+    //获取用户信息
+    getUsers(){
+        return DAO('select * from users',[])
+    }
+    //注册个人信息
+    setUp(users){
+        return DAO('insert into users (username,userpassword,telephone,sex,birthday,registertime) values (?,?,?,?,?,?)',
+            [users.userName,users.userPwd,users.telephone,users.sex,users.birthday,users.registerTime])
+    }
+
     // 获取用户名
     getUserName(userid){
          return DAO("select username from users where userid  = ?",[userid])
@@ -17,14 +27,10 @@ class DB {
     getUserCollections(userid){
         return DAO("select title,time from collections,artical where collections.articalid = artical.articalid and collections.userid = ?",[userid])
     }
-/*    //增加收藏文章
-    AddCollections(){
-        return DAO("insert into collections( articalid ,time) values (?,?)",[userid])
-    }*/
-
    //获取用户发布过的文章
     getUserPublish(userid){
-        return DAO("select title form artical where userid = ?",[userid])
+        return DAO("select title from artical where userid = ?",[userid])
     }
+
 }
 module.exports = new  DB();
