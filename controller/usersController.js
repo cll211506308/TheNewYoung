@@ -1,5 +1,32 @@
 const usersDAO = require('../model/usersDAO');
 module.exports = {
+    //获取用户信息
+    getUsers: async (ctx,next) => {
+        let all = await usersDAO.getUsers(ctx,next);
+        try{
+            ctx.body = {"code":"200","message":"ok",data:all};
+        }catch (e) {
+            ctx.body = {"code":"500","message":"服务器错误",data:[]};
+        }
+    },
+    //注册个人信息
+    setUp: async (ctx,next) => {
+        let users = {};
+        users.userName = ctx.request.body.userName;
+        users.userPwd = ctx.request.body.userPwd;
+        users.telephone = ctx.request.body.telephone;
+        users.sex = ctx.request.body.sex;
+        users.birthday = ctx.request.body.birthday;
+        users.registerTime = new Date();
+        console.log(users)
+        try{
+            let user = await usersDAO.setUp(users);
+            ctx.body = {"code":"200","message":"ok",data:user};
+        }catch (e){
+            ctx.body = {"code":"500","message":"服务器错误"+e.message,data:[]};
+        }
+    },
+
     // 用户名
     getUserName: async (ctx, next) => {
         let userDetails =  await usersDAO.getUserName(ctx.params.userId);
@@ -46,32 +73,5 @@ module.exports = {
         }
     },
 
-    //显示用户的体质类型
-    getUserbodyclass:async (ctx, next) => {
-        let userDetails =  await usersDAO. getUserbodyclass(ctx.params.userId);
-        try{
-            ctx.body = {"code":"200","message":"ok,体质，时间：",data:userDetails};
-        }catch (e) {
-            ctx.body = {"code":"500","message":"服务器错误",data:[]};
-        }
-    },
-    //显示用户的体重
-    getUserbodyclass:async (ctx, next) => {
-        let userDetails =  await usersDAO. getUserbodyclass(ctx.params.userId);
-        try{
-            ctx.body = {"code":"200","message":"ok,体质，时间：",data:userDetails};
-        }catch (e) {
-            ctx.body = {"code":"500","message":"服务器错误",data:[]};
-        }
-    },
-    //从建议库提取给予用户的建议
-    getUsersuggestions:async (ctx, next) => {
-        let userDetails =  await usersDAO. getUsersuggestions(ctx.params.userId);
-        try{
-            ctx.body = {"code":"200","message":"ok,建议：",data:userDetails};
-        }catch (e) {
-            ctx.body = {"code":"500","message":"服务器错误",data:[]};
-        }
-    },
 
 }

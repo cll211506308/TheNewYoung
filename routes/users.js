@@ -1,7 +1,19 @@
 const router = require('koa-router')()
 const usersController = require('../controller/usersController');
 const bodyController = require('../controller/bodyController');
+const suggestionController = require('../controller/suggestionController');
 router.prefix('/users');
+
+//获取用户信息
+router.get('/', async (ctx,next) => {
+    await usersController.getUsers(ctx,next);
+})
+
+//注册
+router.post('/setUp', async (ctx,next) => {
+    await usersController.setUp(ctx,next)
+});
+
 //显示用户的昵称
 router.get('/username/:userId',  async (ctx, next) => {
     await usersController.getUserName(ctx,next);
@@ -37,20 +49,20 @@ router.get('/publish/:userId',  async (ctx, next) => {
 
 //获取用户体重变化
 router.get('/weight/:userId', async (ctx, next) => {
-    await usersController.getUserWeight(ctx,next);
+    await bodyController.getUserWeight(ctx,next);
 });
 //显示用户体质
 router.get('/bodyclass/:userId',  async (ctx, next) => {
-    await usersController.getUserbodyclass(ctx,next);
+    await bodyController.getUserbodyclass(ctx,next);
 });
 //根据体质类型去建议库提取相应建议
 router.get('/suggestion/getsuggestions/:userId',  async (ctx, next) => {
-    await usersController.getUsersuggestions(ctx,next);
+    await suggestionController.getUsersuggestions(ctx,next);
 });
 //将提取的建议插入用户的建议表
 
 //页面查询建议表的建议显示
-router.get('/suggestion',  async (ctx, next) => {
-
+router.get('/suggestion/showsuggestions/:userId',  async (ctx, next) => {
+    await suggestionController.showUsersuggestions(ctx,next);
 });
 module.exports = router;
