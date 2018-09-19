@@ -18,13 +18,13 @@ USE `mydb` ;
 -- Table `mydb`.`body`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`body` (
-  `userid` INT NULL,
+  `userId` INT NULL,
   `time` DATETIME NULL,
-  `bodyid` INT NOT NULL AUTO_INCREMENT,
-  `bodyclass` VARCHAR(50) NULL,
-  `userheight` DOUBLE NULL,
-  `userweight` DOUBLE NULL,
-  PRIMARY KEY (`bodyid`))
+  `bodyId` INT NOT NULL AUTO_INCREMENT,
+  `bodyClass` VARCHAR(50) NULL,
+  `userHeight` DOUBLE NULL,
+  `userWeight` DOUBLE NULL,
+  PRIMARY KEY (`bodyId`))
 ENGINE = InnoDB;
 
 
@@ -32,17 +32,17 @@ ENGINE = InnoDB;
 -- Table `mydb`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`users` (
-  `userid` INT NOT NULL AUTO_INCREMENT,
-  `headpic` VARCHAR(45) NULL,
-  `username` VARCHAR(45) NULL,
-  `userpassword` VARCHAR(45) NULL,
-  `telphone` VARCHAR(45) NULL,
+  `userId` INT NOT NULL AUTO_INCREMENT,
+  `headPic` VARCHAR(45) NULL,
+  `userName` VARCHAR(45) NULL,
+  `userPwd` VARCHAR(45) NULL,
+  `telephone` VARCHAR(45) NULL,
   `autograph` VARCHAR(100) NULL,
   `sex` CHAR(10) NULL,
   `birthday` DATETIME NULL,
-  `registertime` DATETIME NULL,
-  `isexpert` CHAR NULL,
-  PRIMARY KEY (`userid`))
+  `registerTime` DATETIME NULL,
+  `isExpert` CHAR NULL,
+  PRIMARY KEY (`userId`))
 ENGINE = InnoDB;
 
 
@@ -52,16 +52,16 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`artical` (
   `articalid` INT NOT NULL AUTO_INCREMENT,
   `articallabel` VARCHAR(45) NULL,
-  `coverpic` VARCHAR(45) NULL,
+  `coverPic` VARCHAR(45) NULL,
   `content` TEXT NULL,
-  `contentpic1` VARCHAR(45) NULL,
-  `contentpic2` VARCHAR(45) NULL,
-  `contentpic3` VARCHAR(45) NULL,
-  `contentpic4` VARCHAR(45) NULL,
-  `contentpic5` VARCHAR(45) NULL,
+  `contentPic1` VARCHAR(45) NULL,
+  `contentPic2` VARCHAR(45) NULL,
+  `contentPic3` VARCHAR(45) NULL,
+  `contentPic4` VARCHAR(45) NULL,
+  `contentPic5` VARCHAR(45) NULL,
   `status` VARCHAR(10) NULL,
-  `userid` INT NULL,
-  `pageviews` INT NULL,
+  `userId` INT NULL,
+  `pageViews` INT NULL,
   `title` VARCHAR(1000) NULL,
   `articalClassification` VARCHAR(45) NULL,
   PRIMARY KEY (`articalid`))
@@ -72,11 +72,11 @@ ENGINE = InnoDB;
 -- Table `mydb`.`attentions`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`attentions` (
-  `userid` INT NOT NULL,
-  `attentioneduserid` INT NULL,
+  `userId` INT NOT NULL,
+  `attentionedUserId` INT NULL,
   `time` DATETIME NULL,
-  `attentionsid` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`attentionsid`))
+  `attentionsId` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`attentionsId`))
 ENGINE = InnoDB;
 
 
@@ -84,11 +84,11 @@ ENGINE = InnoDB;
 -- Table `mydb`.`collections`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`collections` (
-  `userid` INT NULL,
-  `articalid` INT NULL,
+  `userId` INT NULL,
+  `articalId` INT NULL,
   `time` DATETIME NULL,
-  `collectionsid` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`collectionsid`))
+  `collectionsId` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`collectionsId`))
 ENGINE = InnoDB;
 
 
@@ -96,11 +96,11 @@ ENGINE = InnoDB;
 -- Table `mydb`.`suggestions`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`suggestions` (
-  `userid` INT NOT NULL,
-  `bigsuggestionsid` INT NULL,
+  `userId` INT NOT NULL,
+  `bigSuggestionsId` INT NULL,
   `time` DATETIME NULL,
-  `suggestionsid` INT NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`suggestionsid`))
+  `suggestionsId` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`suggestionsId`))
 ENGINE = InnoDB;
 
 
@@ -111,7 +111,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Bigsuggestions` (
   `bigsuggestionsid` INT NOT NULL AUTO_INCREMENT,
   `sugcontent` TEXT NULL,
   `bodyclass` CHAR(50) NULL,
-  `Bigsuggestionscol` VARCHAR(45) NULL,
   PRIMARY KEY (`bigsuggestionsid`))
 ENGINE = InnoDB;
 
@@ -120,12 +119,12 @@ ENGINE = InnoDB;
 -- Table `mydb`.`comments`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`comments` (
-  `commentsid` INT NOT NULL AUTO_INCREMENT,
-  `postid` INT NULL,
-  `userid` INT NULL,
-  `comcontent` TEXT NULL,
+  `commentsId` INT NOT NULL AUTO_INCREMENT,
+  `postId` INT NULL,
+  `userId` INT NULL,
+  `comContent` TEXT NULL,
   `time` DATETIME NULL,
-  PRIMARY KEY (`commentsid`))
+  PRIMARY KEY (`commentsId`))
 ENGINE = InnoDB;
 
 
@@ -133,10 +132,10 @@ ENGINE = InnoDB;
 -- Table `mydb`.`userlike`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`userlike` (
-  `likeid` INT NOT NULL AUTO_INCREMENT,
-  `userid` INT NULL,
+  `likeId` INT NOT NULL AUTO_INCREMENT,
+  `userId` INT NULL,
   `time` DATETIME NULL,
-  PRIMARY KEY (`likeid`))
+  PRIMARY KEY (`likeId`))
 ENGINE = InnoDB;
 
 
@@ -144,10 +143,10 @@ ENGINE = InnoDB;
 -- Table `mydb`.`administrators`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`administrators` (
-  `adminid` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NULL,
-  `admpassword` INT NULL,
-  PRIMARY KEY (`adminid`))
+  `adminId` INT NOT NULL AUTO_INCREMENT,
+  `userName` VARCHAR(45) NULL,
+  `admPwd` INT NULL,
+  PRIMARY KEY (`adminId`))
 ENGINE = InnoDB;
 
 
@@ -155,18 +154,18 @@ ENGINE = InnoDB;
 -- Table `mydb`.`post`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`post` (
-  `postid` INT NOT NULL AUTO_INCREMENT,
-  `userid` INT NULL,
+  `postId` INT NOT NULL AUTO_INCREMENT,
+  `userId` INT NULL,
   `title` VARCHAR(100) NULL,
-  `postabel` VARCHAR(10) NULL,
+  `postLabel` VARCHAR(10) NULL,
   `time` DATETIME NULL,
-  `pageviews` INT NULL,
-  `postcontent` TEXT NULL,
-  `postpic1` VARCHAR(100) NULL,
-  `postpic2` VARCHAR(100) NULL,
-  `postpic3` VARCHAR(100) NULL,
+  `pageViews` INT NULL,
+  `postContent` TEXT NULL,
+  `postPic1` VARCHAR(100) NULL,
+  `postPic2` VARCHAR(100) NULL,
+  `postPic3` VARCHAR(100) NULL,
   `postClassification` VARCHAR(45) NULL,
-  PRIMARY KEY (`postid`))
+  PRIMARY KEY (`postId`))
 ENGINE = InnoDB;
 
 
@@ -181,12 +180,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users_has_attentions` (
   INDEX `fk_users_has_attentions_users1_idx` (`users_userid` ASC) VISIBLE,
   CONSTRAINT `fk_users_has_attentions_users1`
     FOREIGN KEY (`users_userid`)
-    REFERENCES `mydb`.`users` (`userid`)
+    REFERENCES `mydb`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_has_attentions_attentions1`
     FOREIGN KEY (`attentions_attentionsid`)
-    REFERENCES `mydb`.`attentions` (`attentionsid`)
+    REFERENCES `mydb`.`attentions` (`attentionsId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -203,12 +202,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users_has_collections` (
   INDEX `fk_users_has_collections_users1_idx` (`users_userid` ASC) VISIBLE,
   CONSTRAINT `fk_users_has_collections_users1`
     FOREIGN KEY (`users_userid`)
-    REFERENCES `mydb`.`users` (`userid`)
+    REFERENCES `mydb`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_has_collections_collections1`
     FOREIGN KEY (`collections_collectionsid`)
-    REFERENCES `mydb`.`collections` (`collectionsid`)
+    REFERENCES `mydb`.`collections` (`collectionsId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -225,12 +224,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`users_has_suggestions` (
   INDEX `fk_users_has_suggestions_users1_idx` (`users_userid` ASC) VISIBLE,
   CONSTRAINT `fk_users_has_suggestions_users1`
     FOREIGN KEY (`users_userid`)
-    REFERENCES `mydb`.`users` (`userid`)
+    REFERENCES `mydb`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_has_suggestions_suggestions1`
     FOREIGN KEY (`suggestions_suggestionsid`)
-    REFERENCES `mydb`.`suggestions` (`suggestionsid`)
+    REFERENCES `mydb`.`suggestions` (`suggestionsId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -247,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`suggestions_has_Bigsuggestions` (
   INDEX `fk_suggestions_has_Bigsuggestions_suggestions1_idx` (`suggestions_suggestionsid` ASC) VISIBLE,
   CONSTRAINT `fk_suggestions_has_Bigsuggestions_suggestions1`
     FOREIGN KEY (`suggestions_suggestionsid`)
-    REFERENCES `mydb`.`suggestions` (`suggestionsid`)
+    REFERENCES `mydb`.`suggestions` (`suggestionsId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_suggestions_has_Bigsuggestions_Bigsuggestions1`
@@ -274,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`artical_has_collections` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_artical_has_collections_collections1`
     FOREIGN KEY (`collections_collectionsid`)
-    REFERENCES `mydb`.`collections` (`collectionsid`)
+    REFERENCES `mydb`.`collections` (`collectionsId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -291,12 +290,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`comments_has_users` (
   INDEX `fk_comments_has_users_comments1_idx` (`comments_commentsid` ASC) VISIBLE,
   CONSTRAINT `fk_comments_has_users_comments1`
     FOREIGN KEY (`comments_commentsid`)
-    REFERENCES `mydb`.`comments` (`commentsid`)
+    REFERENCES `mydb`.`comments` (`commentsId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_comments_has_users_users1`
     FOREIGN KEY (`users_userid`)
-    REFERENCES `mydb`.`users` (`userid`)
+    REFERENCES `mydb`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -313,12 +312,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`like_has_users` (
   INDEX `fk_like_has_users_like1_idx` (`like_postid` ASC) VISIBLE,
   CONSTRAINT `fk_like_has_users_like1`
     FOREIGN KEY (`like_postid`)
-    REFERENCES `mydb`.`userlike` (`likeid`)
+    REFERENCES `mydb`.`userlike` (`likeId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_like_has_users_users1`
     FOREIGN KEY (`users_userid`)
-    REFERENCES `mydb`.`users` (`userid`)
+    REFERENCES `mydb`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -335,12 +334,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`post_has_users` (
   INDEX `fk_post_has_users_post1_idx` (`post_postid` ASC) VISIBLE,
   CONSTRAINT `fk_post_has_users_post1`
     FOREIGN KEY (`post_postid`)
-    REFERENCES `mydb`.`post` (`postid`)
+    REFERENCES `mydb`.`post` (`postId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_post_has_users_users1`
     FOREIGN KEY (`users_userid`)
-    REFERENCES `mydb`.`users` (`userid`)
+    REFERENCES `mydb`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -357,12 +356,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`administrators_has_users` (
   INDEX `fk_administrators_has_users_administrators1_idx` (`administrators_adminid` ASC) VISIBLE,
   CONSTRAINT `fk_administrators_has_users_administrators1`
     FOREIGN KEY (`administrators_adminid`)
-    REFERENCES `mydb`.`administrators` (`adminid`)
+    REFERENCES `mydb`.`administrators` (`adminId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_administrators_has_users_users1`
     FOREIGN KEY (`users_userid`)
-    REFERENCES `mydb`.`users` (`userid`)
+    REFERENCES `mydb`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -379,7 +378,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`administrators_has_artical` (
   INDEX `fk_administrators_has_artical_administrators1_idx` (`administrators_adminid` ASC) VISIBLE,
   CONSTRAINT `fk_administrators_has_artical_administrators1`
     FOREIGN KEY (`administrators_adminid`)
-    REFERENCES `mydb`.`administrators` (`adminid`)
+    REFERENCES `mydb`.`administrators` (`adminId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_administrators_has_artical_artical1`
@@ -401,12 +400,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`body_has_users` (
   INDEX `fk_body_has_users_body1_idx` (`body_bodyid` ASC) VISIBLE,
   CONSTRAINT `fk_body_has_users_body1`
     FOREIGN KEY (`body_bodyid`)
-    REFERENCES `mydb`.`body` (`bodyid`)
+    REFERENCES `mydb`.`body` (`bodyId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_body_has_users_users1`
     FOREIGN KEY (`users_userid`)
-    REFERENCES `mydb`.`users` (`userid`)
+    REFERENCES `mydb`.`users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
