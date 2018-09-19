@@ -5,4 +5,4 @@ var options = {
     password:'root',
     database:'mydb'
 }
-module.exports = options;
+module.exports.options = options;
