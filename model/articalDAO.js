@@ -35,7 +35,10 @@ class DB {
     searchPost(keys) {
         return DAO('select postpic1,title,postClassification,postabel,pageviews from post where postabel like "%'+keys+'%" or postClassification like "%'+keys+'%" or postcontent like "%'+keys+'%"', [])
     };
-
+    //删除文章(CLL)
+    deleteArtical(articalid){
+        return DAO("delete from artical where articalId = ?",[articalid])
+    }
 }
 
 module.exports = new DB();
