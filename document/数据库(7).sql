@@ -50,8 +50,8 @@ ENGINE = InnoDB;
 -- Table `mydb`.`artical`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`artical` (
-  `articalid` INT NOT NULL AUTO_INCREMENT,
-  `articallabel` VARCHAR(45) NULL,
+  `articalId` INT NOT NULL AUTO_INCREMENT,
+  `articalLabel` VARCHAR(45) NULL,
   `coverPic` VARCHAR(45) NULL,
   `content` TEXT NULL,
   `contentPic1` VARCHAR(45) NULL,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`artical` (
   `pageViews` INT NULL,
   `title` VARCHAR(1000) NULL,
   `articalClassification` VARCHAR(45) NULL,
-  PRIMARY KEY (`articalid`))
+  PRIMARY KEY (`articalId`))
 ENGINE = InnoDB;
 
 
@@ -108,10 +108,10 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Bigsuggestions`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Bigsuggestions` (
-  `bigsuggestionsid` INT NOT NULL AUTO_INCREMENT,
-  `sugcontent` TEXT NULL,
-  `bodyclass` CHAR(50) NULL,
-  PRIMARY KEY (`bigsuggestionsid`))
+  `bigsuggestionsId` INT NOT NULL AUTO_INCREMENT,
+  `sugContent` TEXT NULL,
+  `bodyClass` CHAR(50) NULL,
+  PRIMARY KEY (`bigsuggestionsId`))
 ENGINE = InnoDB;
 
 
@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`suggestions_has_Bigsuggestions` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_suggestions_has_Bigsuggestions_Bigsuggestions1`
     FOREIGN KEY (`Bigsuggestions_suggestionsid`)
-    REFERENCES `mydb`.`Bigsuggestions` (`bigsuggestionsid`)
+    REFERENCES `mydb`.`Bigsuggestions` (`bigsuggestionsId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -268,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`artical_has_collections` (
   INDEX `fk_artical_has_collections_artical1_idx` (`artical_articalid` ASC) VISIBLE,
   CONSTRAINT `fk_artical_has_collections_artical1`
     FOREIGN KEY (`artical_articalid`)
-    REFERENCES `mydb`.`artical` (`articalid`)
+    REFERENCES `mydb`.`artical` (`articalId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_artical_has_collections_collections1`
@@ -383,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`administrators_has_artical` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_administrators_has_artical_artical1`
     FOREIGN KEY (`artical_articalid`)
-    REFERENCES `mydb`.`artical` (`articalid`)
+    REFERENCES `mydb`.`artical` (`articalId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
