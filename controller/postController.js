@@ -26,5 +26,14 @@ module.exports = {
         }catch(e){
             ctx.body = {'code':500,"message":"没有获取到相应帖子 ！！" + e.message, data:[]}
         }
+    },
+    //获取用户总数
+    findUserCount: async (ctx,next) => {
+        try{
+            let all = await postDAO.findUserCount(ctx.params.postid);
+            ctx.body = {'code':200,"message":"ok",data:all};
+        }catch(e){
+            ctx.body = {'code':500,"message":"没有获取到用户 ！！" + e.message, data:[]}
+        }
     }
 }
