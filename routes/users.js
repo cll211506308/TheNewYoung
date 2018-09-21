@@ -34,8 +34,8 @@ router.post('/updateusers', async (ctx,next) => {
 
 });
 //用户填写认证信息（将用户的认证信息存入用户表）
-router.post('/set', async (ctx,next) => {
-
+router.post('/setidentity', async (ctx,next) => {
+    await usersController.setIdentity(ctx,next)
 });
 //增加发布的文章(富文本编辑)
 
