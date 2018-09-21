@@ -22,14 +22,18 @@ class DB {
     getUserautograph(userid){
         return DAO("select autograph from users where userId  = ?",[userid])
     }
+    //修改用户信息(上传头像)
+    updateUsers(userid){
+        return DAO("",[userid])
+    }
     //获取用户身份信息
     getUseridentity(userid){
         return DAO("select isExpert from users where userId  = ?",[userid])
     }
-    //修改用户信息(上传头像)
-   updateUsers(userid){
-        return DAO("",[userid])
+   // 认证用户身份
+    setUp(users){
+        return DAO('UPDATE users  SET  isExpert= "是" where userId = ?;',
+            [users.userName,users.userPwd,users.telephone,users.sex,users.birthday,users.registerTime])
     }
-
 }
 module.exports = new  DB();
