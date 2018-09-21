@@ -32,21 +32,18 @@ class DB{
     }
     //删除帖子
     deletePost(id){
-        return DAO('delete from posts where id = ${id}',[id])
+        return DAO('delete from posts where id = ?',[id])
     }
 
-    //查看帖子所有评论
-    findComment(id){
-        return DAO('select * from comments where id = ${id}',[id])
-    }
+
     //浏览量
     updatePostPv(id){
-        return DAO('update posts set pageviews= pageviews + 1 where id = ${id}',[id])
+        return DAO('update posts set pageviews= pageviews + 1 where id = ?',[id])
     }
 
     //查看关注人的帖子
     getLikeuserPost(id){
-        return('select * from post where userid = (select likeid from userlike where userid = ${id})')
+        return('select * from post where userid = (select likeid from userlike where userid = ?,[id])')
     }
 }
 
