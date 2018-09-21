@@ -12,16 +12,30 @@ router.get('/count', async (ctx, next) => {
         await postController.findPostCount(ctx, next)
     }
 )
-//查询帖子的评论
-router.get('/comments', async (ctx, next) => {
-        await commentsController.findComment(ctx, next)
-    }
-)
+
 //查询关注人的帖子
-router.get('/like', async (ctx, next) => {
+router.get('/likeUser', async (ctx, next) => {
         await postController.getLikeuserPost(ctx, next)
     }
 )
-
+router.get('/like/:articalId',async (ctx,next) => {
+    await likeController.addLike(ctx,next)
+})
+//取消点赞
+router.get('/cancelLike/:articalId',async (ctx,next) => {
+    await likeController.cancelLike(ctx,next)
+})
+//添加评论
+router.post('/addComment', async (ctx,next) => {
+    await commentsController.addComment(ctx,next)
+})
+//删除评论
+router.get('/deleteComment/:commentsId', async (ctx,next) => {
+    await commentsController.deleteComment(ctx,next)
+})
+//查看所有评论
+router.get('/getCom/:postId', async (ctx,next) => {
+    await commentsController.getComment(ctx,next)
+})
 
 module.exports = router;
