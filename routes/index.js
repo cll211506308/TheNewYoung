@@ -13,7 +13,7 @@ router.get('/search/:keys', async (ctx, next) => {
     }
 )
 //显示点击相应链接获取的文章数据
-router.get('/relativeEssay/:articalid', async (ctx, next) => {
+router.get('/relativeEssay/:articalId', async (ctx, next) => {
         await articalController.getRelativeEssay(ctx, next)
     }
 )

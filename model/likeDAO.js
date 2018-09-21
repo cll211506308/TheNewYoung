@@ -1,13 +1,13 @@
 const DAO = require('../model/DAO');
 
 class DB{
-    //点赞
-    insertLike(id){
-        return DAO('insert into userlike set likeid=?,userid=?,time=?',[id])
+    //帖子点赞
+    addLike(id){
+        return DAO('insert into userlike values (?,?,?)',[id.aId,id.uId,id.likeTime])
     }
-    //取消点赞
-    deleteLike(id){
-        return DAO('delete from userlike where id = ${id}',[id])
+    //取消帖子点赞
+    cancelLike(id){
+        return DAO('delete from userlike where likeId = ? and userId = ?',[id.aId,id.uId])
     }
 }
 
