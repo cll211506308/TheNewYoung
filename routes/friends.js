@@ -1,7 +1,8 @@
 const router = require('koa-router')()
 const postController = require('../controller/postController')
 const commentsController = require('../controller/commentsController')
-router.prefix('/post')
+const likeController = require('../controller/likeController')
+router.prefix('/friends')
 //显示所有帖子
 router.get('/', async (ctx, next) => {
         await postController.findPost(ctx, next)
