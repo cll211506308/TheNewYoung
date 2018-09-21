@@ -21,7 +21,7 @@ module.exports = {
     },
     getRelativeEssay: async (ctx,next) => {
         try{
-            let all = await articalDAO.getRelativeEssay(ctx.params.articalid);
+            let all = await articalDAO.getRelativeEssay(ctx.params.articalId);
             ctx.body = {'code':200,"message":"ok",data:all};
         }catch(e){
             ctx.body = {'code':500,"message":"没有获取到相应文章 ！！" + e.message, data:[]}
