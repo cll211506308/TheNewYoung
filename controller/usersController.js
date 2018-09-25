@@ -53,7 +53,7 @@ module.exports = {
             ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
-    //用户身份
+    //获取用户身份
     getUseridentity: async (ctx, next) => {
         let userDetails =  await usersDAO. getUseridentity(ctx.params.userId);
         try{
@@ -62,6 +62,7 @@ module.exports = {
             ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
+   //认证用户身份
 
 
 }
