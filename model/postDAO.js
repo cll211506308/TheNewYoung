@@ -43,7 +43,7 @@ class DB{
 
     //查看关注人的帖子
     getLikeuserPost(id){
-        return('select * from post where userid = (select likeid from userlike where userid = ?,[id])')
+        return('select * from post where userid = any(select likeid from userlike where userid = ?,[id])')
     }
 }
 
