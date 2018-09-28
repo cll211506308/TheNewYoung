@@ -13,7 +13,6 @@ router.get('/count', async (ctx, next) => {
         await postController.findPostCount(ctx, next)
     }
 )
-
 //查询关注人的帖子
 router.get('/likeUser:userid', async (ctx, next) => {
         await postController.getLikeuserPost(ctx, next)
