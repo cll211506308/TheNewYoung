@@ -30,7 +30,7 @@ module.exports = {
     },
     //获取用户收藏的文章
     getUserCollections:async (ctx, next) => {
-        let userDetails =  await usersDAO.getUserCollections(ctx.params.userId);
+        let userDetails =  await collectionsDAO.getUserCollections(ctx.params.userId);
         try{
             ctx.body = {"code":"200","message":"ok,文章标题：",data:userDetails};
         }catch (e) {
@@ -39,7 +39,7 @@ module.exports = {
     },
     //显示用户发布过的文章
     getUserPublish:async (ctx, next) => {
-        let userDetails =  await usersDAO. getUserPublish(ctx.params.userId);
+        let userDetails =  await collectionsDAO. getUserPublish(ctx.params.userId);
         try{
             ctx.body = {"code":"200","message":"ok,文章标题：",data:userDetails};
         }catch (e) {

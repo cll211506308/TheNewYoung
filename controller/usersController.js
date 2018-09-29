@@ -21,7 +21,7 @@ module.exports = {
         console.log(users)
         try{
             let user = await usersDAO.setUp(users);
-            ctx.body = {"code":"200","message":"ok",data:user};
+            ctx.body = {"code":"200","message":"ok",data:users};
         }catch (e){
             ctx.body = {"code":"500","message":"服务器错误"+e.message,data:[]};
         }
@@ -62,7 +62,29 @@ module.exports = {
             ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
-   //认证用户身份
+   //修改个人信息（昵称，头像，个性签名）
+    updateusers: async (ctx, next) => {
+        let users ={};
+        users.userName = ctx.request.body.userName;
+        users.headpic =  ctx.request.body.headpic;
+        users.autograph = ctx.request.body.autograph;
+        try{
+            await usersDAO.updateusers(users);
+            ctx.body = {"code":"200","message":"ok,修改成功",data:users};
+        }catch (e) {
+            ctx.body = {"code":"500","message":"服务器错误",data:[]};
+        }
+    },
+ /*  // 认证用户专家身份
+    setIdentity: async (ctx,next) => {
+        let users = {};
 
+        try{
+            let user = await usersDAO.setIdentity(users);
+            ctx.body = {"code":"200","message":"ok",data:users};
+        }catch (e){
+            ctx.body = {"code":"500","message":"服务器错误"+e.message,data:[]};
+        }
+    },*/
 
 }
