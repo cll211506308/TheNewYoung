@@ -14,7 +14,7 @@ router.get('/count', async (ctx, next) => {
     }
 )
 //查询关注人的帖子
-router.get('/likeUser', async (ctx, next) => {
+router.get('/likeUser:userid', async (ctx, next) => {
         await postController.getLikeuserPost(ctx, next)
     }
 )
@@ -37,5 +37,7 @@ router.get('/deleteComment/:commentsId', async (ctx,next) => {
 router.get('/getCom/:postId', async (ctx,next) => {
     await commentsController.getComment(ctx,next)
 })
+
+
 
 module.exports = router;
