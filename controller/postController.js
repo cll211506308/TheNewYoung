@@ -73,12 +73,11 @@ module.exports = {
 
     //查看关注人的帖子
     getLikeuserPost: async (ctx, next) => {
-        try {
-            let all = await postDAO.getLikeuserPost(ctx, next);
-            ctx.body = {'code': 200, "message": "ok", data: all};
+        let allpost = await postDAO.getLikeuserPost(ctx.params.userid);
+        try{
+            ctx.body = {"code":"200","message":"ok",data:allpost };
         } catch (e) {
-            ctx.body = {'code': 500, "message": "没有获取到帖子 ！！" + e.message, data: []}
+            ctx.body = {"code": "500", "message": "没有获取到帖子 ！"+ e.message, data: []}
         }
-
     }
 }

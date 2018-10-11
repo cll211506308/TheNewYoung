@@ -14,10 +14,11 @@ router.get('/count', async (ctx, next) => {
     }
 )
 //查询关注人的帖子
-router.get('/likeUser:userid', async (ctx, next) => {
+router.get('/likeUser/:userId', async (ctx, next) => {
         await postController.getLikeuserPost(ctx, next)
     }
 )
+//点赞
 router.get('/like/:articalId',async (ctx,next) => {
     await likeController.addLike(ctx,next)
 })
@@ -36,6 +37,14 @@ router.get('/deleteComment/:commentsId', async (ctx,next) => {
 //查看所有评论
 router.get('/getCom/:postId', async (ctx,next) => {
     await commentsController.getComment(ctx,next)
+})
+//关注
+router.get('/attention/:userid,attentioneduserid', async (ctx,next) => {
+    await attentionsController.attention(ctx,next)
+})
+//取消关注
+router.get('/delattention/:userid,attentioneduserid', async (ctx,next) => {
+    await attentionsController.delAttention(ctx,next)
 })
 
 

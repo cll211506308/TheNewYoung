@@ -47,8 +47,8 @@ class DB{
     }
 
     //查看关注人的帖子
-    getLikeuserPost(id){
-        return('select * from post where userid = any(select likeid from userlike where userid = ?,[id])')
+    getLikeuserPost(userid){
+        return DAO('select * from post where userid = any(select attentionsi from attentions where userid =?)',[userid])
     }
 }
 
