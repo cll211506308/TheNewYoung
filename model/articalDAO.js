@@ -39,6 +39,10 @@ class DB {
     deleteArtical(articalid){
         return DAO("delete from artical where articalId = ?",[articalid])
     }
+    //获取用户发布过的文章
+    getUserPublish(userid){
+        return DAO("select title from artical where userId = ?",[userid])
+    }
 }
 
 module.exports = new DB();
