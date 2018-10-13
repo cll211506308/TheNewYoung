@@ -43,6 +43,20 @@ class DB {
     getUserPublish(userid){
         return DAO("select title from artical where userId = ?",[userid])
     }
+
+    //养生堂热门文章排行
+    getYangRank() {
+        return DAO('select title from artical where articalClassification = "养生堂" order by pageViews desc', []);
+    };
+    //营养饮食热门文章排行
+    getDietRank() {
+        return DAO('select title from artical where articalClassification = "营养饮食" order by pageViews desc', []);
+    };
+    //健身课堂热门文章排行
+    getFitRank() {
+        return DAO('select title from artical where articalClassification = "健身课堂" order by pageViews desc', []);
+    };
+    
 }
 
 module.exports = new DB();

@@ -1,5 +1,4 @@
 const collectionsDAO = require('../model/collectionsDAO');
-const usersDAO = require('../model/usersDAO');
 
 module.exports = {
     //添加收藏
@@ -22,7 +21,7 @@ module.exports = {
     //取消收藏
     delCollection:async (ctx,next)=>{
         try {
-            let cancelCol = await collectionsDAO.delCollection(ctx.params.collectionsId);
+            let cancelCol = await collectionsDAO.delCollection(ctx.request.body.collectionsId);
             ctx.body = {"code":200,"message":"取消成功",data:[]}
         }catch (err) {
             ctx.body = {"code":500,"message":err.message,data:[]}
@@ -39,7 +38,7 @@ module.exports = {
     },
     //显示用户发布过的文章
     getUserPublish:async (ctx, next) => {
-        let userDetails =  await collectionsDAO. getUserPublish(ctx.params.userId);
+        let userDetails =  await collectionsDAO.getUserPublish(ctx.params.userId);
         try{
             ctx.body = {"code":"200","message":"ok,文章标题：",data:userDetails};
         }catch (e) {

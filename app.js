@@ -5,10 +5,12 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-const cors = require('koa-cors')
+// const cors = require('koa-cors')
 const index = require('./routes/index')
 const users = require('./routes/users')
 const youngLife = require('./routes/youngLife')
+const fit = require('./routes/fit')
+const foods = require('./routes/foods')
 const friends = require('./routes/friends')
 
 
@@ -46,6 +48,8 @@ app.use(async (ctx, next) => {
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(youngLife.routes(), youngLife.allowedMethods())
+app.use(fit.routes(), fit.allowedMethods())
+app.use(foods.routes(), foods.allowedMethods())
 app.use(friends.routes(), friends.allowedMethods())
 
 
