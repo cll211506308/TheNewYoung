@@ -1,9 +1,9 @@
 var DAO = require('../model/DAO');
 
 class DB {
-    //获取用户信息
-    getUsers(){
-        return DAO('select * from users',[])
+    //获取用户登录信息
+    login(user){
+        return DAO('select * from users where userName = ? and userPwd = ?',[user.userName,user.userPwd])
     }
     //注册个人信息
     setUp(users){

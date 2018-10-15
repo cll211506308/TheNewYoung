@@ -6,10 +6,10 @@ const articalController = require('../controller/articalController');
 const collectionsController = require('../controller/collectionsController');
 router.prefix('/users');
 
-//获取用户信息
-router.get('/', async (ctx,next) => {
-    await usersController.getUsers(ctx,next);
-})
+//登录
+router.post('/login', async (ctx,next) => {
+    await usersController.login(ctx,next);
+});
 //注册
 router.post('/setUp', async (ctx,next) => {
     await usersController.setUp(ctx,next)

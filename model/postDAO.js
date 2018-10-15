@@ -33,7 +33,7 @@ class DB{
     }
     // 发表帖子
     insertPost(){
-        return DAO('insert into post set postid,userid=?,title=?,postabel=?,time=?,=?,postcontent=?,postClassificatio=?',[])
+        return DAO('insert into post set postid,userid=?,title=?,postlabel=?,time=?,=?,postcontent=?,postClassificatio=?',[])
     }
     //删除帖子
     deletePost(id){
@@ -48,7 +48,7 @@ class DB{
 
     //查看关注人的帖子
     getLikeuserPost(userid){
-        return DAO('select * from post where userid = any(select attentionsi from attentions where userid =?)',[userid])
+        return DAO('select * from post where userid = any(select attentionsid from attentions where userid =?)',[userid])
     }
 }
 

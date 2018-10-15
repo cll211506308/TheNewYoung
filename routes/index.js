@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 const articalController = require('../controller/articalController')
 const postController = require('../controller/postController')
-router.prefix('/index');
+router.prefix('/');
 
 //显示首页上的文章数据
 router.get('/', async (ctx, next) => {

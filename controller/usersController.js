@@ -1,8 +1,18 @@
 const usersDAO = require('../model/usersDAO');
+var crypto = require('crypto')
+
 module.exports = {
-    //获取用户信息
-    getUsers: async (ctx,next) => {
-        let all = await usersDAO.getUsers(ctx,next);
+    //登录
+    login: async (ctx,next) => {
+        let user = {};
+        user.userName = ctx.request.body.userName;
+        user.userPwd = ctx.request.body.userPwd;
+        // let pwd = ctx.request.body.userPwd;
+        // const hash = crypto.createHash('md5');
+        // hash.update(pwd);
+        // let pwdMd5 = hash.digest('hex');
+        // user.userPwd = pwdMd5;
+        let all = await usersDAO.login(user);
         try{
             ctx.body = {"code":"200","message":"ok",data:all};
         }catch (e) {
