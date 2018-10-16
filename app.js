@@ -5,7 +5,7 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-// const cors = require('koa-cors')
+
 const index = require('./routes/index')
 const users = require('./routes/users')
 const youngLife = require('./routes/youngLife')
@@ -23,6 +23,7 @@ app.use(async (ctx, next) => {
     ctx.set('Access-Control-Allow-Methods', 'OPTIONS,GET,HEAD,PUT,POST,DELETE,PATCH')
     await next();
 });
+
 
 // middlewares
 app.use(bodyparser({
