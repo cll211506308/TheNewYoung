@@ -63,7 +63,10 @@ module.exports = {
 
     //浏览量
     updatePostPv: async (ctx, next) => {
-        let updatePostPv =  await postDAO.updatePostPv(ctx.params.postlId);
+        let all = ctx.params.postid;
+        console.log(ctx.params)
+        console.log(all)
+        let abc =await postDAO.updatePostPv(all);
         try{
             ctx.body = {"code":"200","message":"ok,成功",data:[]};
         }catch (e) {

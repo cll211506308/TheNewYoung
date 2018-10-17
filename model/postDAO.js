@@ -42,8 +42,8 @@ class DB{
 
 
     //浏览量
-    updatePostPv(id){
-        return DAO('update posts set pageviews= pageviews + 1 where id = ?',[id])
+    updatePostPv(postid){
+        return DAO('update post set pageviews = pageviews + 1 where postid = ?',[postid])
     }
 
     //查看关注人的帖子

@@ -9,6 +9,11 @@ router.get('/', async (ctx, next) => {
         await postController.findPost(ctx, next)
     }
 )
+//浏览量
+router.get('/uppv/:postid', async (ctx, next) => {
+        await postController.updatePostPv(ctx, next)
+    }
+)
 //查询所有帖子数量
 router.get('/count', async (ctx, next) => {
         await postController.findPostCount(ctx, next)
