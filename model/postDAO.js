@@ -3,23 +3,23 @@ const DAO = require('../model/DAO');
 class DB{
     //获取推荐的帖子
     getReconmendPost(){
-        return DAO('select postpic1,title,postabel from post order by pageviews',[])
+        return DAO('select postPic1,title,postLabel from post order by pageViews desc',[])
     }
     //获取养生堂的帖子
     getYangPost(){
-        return DAO('select postpic1,title,postabel from post where postClassification = "养生堂" order by pageviews desc',[]);
+        return DAO('select postPic1,title,postLabel from post where postClassification = "养生堂" order by pageViews desc',[]);
     };
     //获取营养饮食的帖子
     getDietPost(){
-        return DAO('select postpic1,title,postabel from post where postClassification = "营养饮食" order by pageviews desc',[]);
+        return DAO('select postPic1,title,postLabel from post where postClassification = "营养饮食" order by pageViews desc',[]);
     };
     //获取健身课堂的帖子
     getFitPost(){
-        return DAO('select postpic1,title,postabel from post where postClassification = "健身课堂" order by pageviews desc',[]);
+        return DAO('select postPic1,title,postLabel from post where postClassification = "健身课堂" order by pageViews desc',[]);
     };
     //获取点击后的帖子数据
     getRelativePost(id){
-        return DAO('select title,postabel,postClassification,postcontent,postpic1,postpic2,postpic3,post.userid,autograph from post,users where post.userid = users.userid and postid = ?',[id])
+        return DAO('select title,postLabel,postClassification,postContent,postPic1,postPic2,postPic3,post.userId,autograph from post,users where post.userId = users.userId and postId = ?',[id])
     }
 
 

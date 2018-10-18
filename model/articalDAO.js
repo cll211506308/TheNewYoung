@@ -3,12 +3,12 @@ const DAO = require('../model/DAO');
 class DB {
     //获取推荐文章数据
     getReconmendEssay() {
-        return DAO('select coverPic,title,articallabel from artical order by pageViews desc', [])
+        return DAO('select coverPic,title,articalLabel from artical order by pageViews desc', [])
     }
 
     //获取养生堂文章数据
     getYangEssay() {
-        return DAO('select coverPic,title,articallabel from artical where articalClassification = "养生堂" order by pageViews desc', []);
+        return DAO('select coverPic,title,articalLabel from artical where articalClassification = "养生堂" order by pageViews desc', []);
     };
 
     //获取营养饮食文章数据
@@ -28,7 +28,7 @@ class DB {
 
     //获取搜索相关文章数据
     searchEssay(keys) {
-        return DAO('select coverPic,title,articalClassification,articallabel,pageViews from artical where articallabel like "%' + keys + '%" or articalClassification like "%' + keys + '%" or content like "%' + keys + '%"', [])
+        return DAO('select coverPic,title,articalClassification,articalLabel,pageViews from artical where articallabel like "%' + keys + '%" or articalClassification like "%' + keys + '%" or content like "%' + keys + '%"', [])
     };
 
     //获取搜索相关帖子数据
