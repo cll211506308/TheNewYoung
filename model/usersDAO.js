@@ -7,8 +7,12 @@ class DB {
     }
     //注册个人信息
     setUp(users){
-        return DAO('insert into users (username,userPwd,telephone,sex,birthday,registerTime) values (?,?,?,?,?,?)',
-            [users.userName,users.userPwd,users.telephone,users.sex,users.birthday,users.registerTime])
+        return DAO('insert into users (username,userPwd,registerTime) values (?,?,?)',
+            [users.userName,users.userPwd,users.registerTime])
+    }
+    //判断用户名是否存在
+    judgeName(userName) {
+        return DAO('select userId from users where userName = ?',[userName])
     }
     // 获取用户名
     getUserName(userid){

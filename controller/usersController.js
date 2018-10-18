@@ -24,9 +24,6 @@ module.exports = {
         let users = {};
         users.userName = ctx.request.body.userName;
         users.userPwd = ctx.request.body.userPwd;
-        users.telephone = ctx.request.body.telephone;
-        users.sex = ctx.request.body.sex;
-        users.birthday = ctx.request.body.birthday;
         users.registerTime = new Date();
         console.log(users)
         try{
@@ -34,6 +31,15 @@ module.exports = {
             ctx.body = {"code":"200","message":"ok",data:users};
         }catch (e){
             ctx.body = {"code":"500","message":"服务器错误"+e.message,data:[]};
+        }
+    },
+    //判断用户名存在不
+    judgeName: async (ctx, next) => {
+        let all =  await usersDAO.judgeName(ctx.params.userName);
+        try{
+            ctx.body = {"code":"200","message":"ok,用户名",data:all};
+        }catch (e) {
+            ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
     // 用户名

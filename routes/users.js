@@ -14,6 +14,10 @@ router.post('/login', async (ctx,next) => {
 router.post('/setUp', async (ctx,next) => {
     await usersController.setUp(ctx,next)
 });
+//判断用户存在
+router.get('/judgeName/:userName',  async (ctx, next) => {
+    await usersController.judgeName(ctx,next);
+});
 //显示用户的昵称
 router.get('/username/:userId',  async (ctx, next) => {
     await usersController.getUserName(ctx,next);
