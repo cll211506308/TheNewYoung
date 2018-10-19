@@ -38,5 +38,9 @@ class DB {
     updateusers(userid){
         return DAO('UPDATE users  SET userName=?,headPic=?,autograph=? where userId = ?;', [userid])
     }
+    //获取用户总数
+    findUsersCount(){
+        return DAO('select count(*) as count from users',[])
+    }
 }
 module.exports = new  DB();

@@ -66,6 +66,11 @@ router.get('/collections/:userId', async (ctx, next) => {
 router.get('/publish/:userId',  async (ctx, next) => {
     await collectionsController.getUserPublish(ctx,next);
 });
+//查询所有用户数量
+router.get('/count', async (ctx, next) => {
+        await usersController.findUsersCount(ctx, next)
+    }
+)
 /*//用户填写专家身份认证信息（将用户的认证信息存入用户表，多文件上传）
 router.post('/setidentity/:userId', async (ctx,next) => {
     await usersController.setIdentity(ctx,next)

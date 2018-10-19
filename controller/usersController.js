@@ -91,6 +91,15 @@ module.exports = {
             ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
+    //获取用户总数
+    findUsersCount: async (ctx, next) => {
+        try {
+            let all = await usersDAO.findUsersCount(ctx, next);
+            ctx.body = {'code': 200, "message": "ok", data: all};
+        } catch (e) {
+            ctx.body = {'code': 500, "message": "没有获取到用户 ！！" + e.message, data: []}
+        }
+    },
  /*  // 认证用户专家身份
     setIdentity: async (ctx,next) => {
         let users = {};
