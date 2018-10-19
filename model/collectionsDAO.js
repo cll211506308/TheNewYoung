@@ -16,7 +16,7 @@ class DB{
     }
     //获取用户发布过的文章
     getUserPublish(userid){
-        return DAO("select title from artical where userId = ?",[userid])
+        return DAO("select title,articalLabel from artical where userId = ?",[userid])
     }
 }
 
