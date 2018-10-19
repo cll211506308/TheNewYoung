@@ -32,8 +32,8 @@ class DB{
         return DAO('select * from post',[])
     }
     // 发表帖子
-    insertPost(){
-        return DAO('insert into post set postid,userid=?,title=?,postlabel=?,time=?,=?,postcontent=?,postClassificatio=?',[])
+    insertPost(posts){
+        return DAO('insert into post set userId=?,title=?,postLabel=?,postTime=?,pageViews=?,postContent=?',[posts.userId,posts.title,posts.postLabel,posts.postTime,posts.pageViews,posts.postContent])
     }
     //删除帖子
     deletePost(id){

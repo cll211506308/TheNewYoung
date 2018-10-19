@@ -49,7 +49,20 @@ module.exports = {
     },
     // 发表帖子
     insertPost: async (ctx, next) => {
-
+        let posts = {};
+        console.log(ctx.query)
+        posts.userId = ctx.query.userId;
+        posts.title = ctx.query.title;
+        posts.postLabel = ctx.query.postLabel;
+        posts.postTime = new Date();
+        posts.pageViews = 1;
+        posts.postContent = ctx.query.postContent;
+        try{
+            let all = await postDAO.insertPost(posts);
+            ctx.body = {"code":"200","message":"ok",data:all};
+        }catch (e){
+            ctx.body = {"code":"500","message":"服务器错误"+e.message,data:[]};
+        }
     },
     //删除帖子
     eletePost:async (ctx, next) => {

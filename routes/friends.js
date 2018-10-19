@@ -8,6 +8,11 @@ router.get('/', async (ctx, next) => {
         await postController.findPost(ctx, next)
     }
 )
+//发表帖子
+router.get('/submit', async (ctx, next) => {
+        await postController.insertPost(ctx, next)
+    }
+)
 //查询所有帖子数量
 router.get('/count', async (ctx, next) => {
         await postController.findPostCount(ctx, next)
