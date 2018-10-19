@@ -3,19 +3,19 @@ const DAO = require('../model/DAO');
 class DB{
     //获取推荐的帖子
     getReconmendPost(){
-        return DAO('select postPic1,title,postLabel from post order by pageViews desc',[])
+        return DAO('select postId,postPic1,title,postLabel from post order by pageViews desc',[])
     }
     //获取养生堂的帖子
     getYangPost(){
-        return DAO('select postPic1,title,postLabel from post where postClassification = "养生堂" order by pageViews desc',[]);
+        return DAO('select postId,postPic1,title,postLabel from post where postClassification = "养生堂" order by pageViews desc',[]);
     };
     //获取营养饮食的帖子
     getDietPost(){
-        return DAO('select postPic1,title,postLabel from post where postClassification = "营养饮食" order by pageViews desc',[]);
+        return DAO('select postId,postPic1,title,postLabel from post where postClassification = "营养饮食" order by pageViews desc',[]);
     };
     //获取健身课堂的帖子
     getFitPost(){
-        return DAO('select postPic1,title,postLabel from post where postClassification = "健身课堂" order by pageViews desc',[]);
+        return DAO('select postId,postPic1,title,postLabel from post where postClassification = "健身课堂" order by pageViews desc',[]);
     };
     //获取点击后的帖子数据
     getRelativePost(id){
