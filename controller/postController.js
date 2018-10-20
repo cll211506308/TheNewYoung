@@ -76,9 +76,7 @@ module.exports = {
 
     //浏览量
     updatePostPv: async (ctx, next) => {
-        let all = ctx.params.postid;
-        console.log(ctx.params)
-        console.log(all)
+        let all = ctx.params.postId;
         let abc =await postDAO.updatePostPv(all);
         try{
             ctx.body = {"code":"200","message":"ok,成功",data:[]};
@@ -89,9 +87,10 @@ module.exports = {
 
     //查看关注人的帖子
     getLikeuserPost: async (ctx, next) => {
-        let allpost = await postDAO.getLikeuserPost(ctx.params.userid);
+        let userId = ctx.params.userId;
         try{
-            ctx.body = {"code":"200","message":"ok",data:allpost };
+            let all = await postDAO.getLikeuserPost(userId);
+            ctx.body = {"code":"200","message":"ok",data:all };
         } catch (e) {
             ctx.body = {"code": "500", "message": "没有获取到帖子 ！"+ e.message, data: []}
         }

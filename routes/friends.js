@@ -13,13 +13,18 @@ router.get('/submit', async (ctx, next) => {
         await postController.insertPost(ctx, next)
     }
 )
+//浏览量
+router.get('/uppv/:postId', async (ctx, next) => {
+        await postController.updatePostPv(ctx, next)
+    }
+)
 //查询所有帖子数量
 router.get('/count', async (ctx, next) => {
         await postController.findPostCount(ctx, next)
     }
 )
 //查询关注人的帖子
-router.get('/likeUser:userid', async (ctx, next) => {
+router.get('/likeUser/:userId', async (ctx, next) => {
         await postController.getLikeuserPost(ctx, next)
     }
 )

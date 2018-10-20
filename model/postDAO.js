@@ -29,7 +29,7 @@ class DB{
     }
     //查询所有帖子
     findPost(){
-        return DAO('select * from post',[])
+        return DAO('SELECT * FROM post,users WHERE post.userId = users.userId order by postTime desc',[])
     }
     // 发表帖子
     insertPost(posts){
@@ -47,8 +47,8 @@ class DB{
     }
 
     //查看关注人的帖子
-    getLikeuserPost(userid){
-        return DAO('select * from post where userid = any(select attentionsid from attentions where userid =?)',[userid])
+    getLikeuserPost(userId){
+        return DAO('select * from post where userId = any(select attentionedUserId from attentions where userId =?)',[userId])
     }
 }
 
