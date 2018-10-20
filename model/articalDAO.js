@@ -3,22 +3,22 @@ const DAO = require('../model/DAO');
 class DB {
     //获取推荐文章数据
     getReconmendEssay() {
-        return DAO('select articalId,coverPic,title,articalLabel from artical order by pageViews desc', [])
+        return DAO('select articalId,coverPic,title,articalLabel,userId,pageViews from artical order by pageViews desc', [])
     }
 
     //获取养生堂文章数据
     getYangEssay() {
-        return DAO('select articalId,coverPic,title,articalLabel from artical where articalClassification = "养生堂" order by pageViews desc', []);
+        return DAO('select articalId,coverPic,title,articalLabel,userId,pageViews from artical where articalClassification = "养生堂" order by pageViews desc', []);
     };
 
     //获取营养饮食文章数据
     getDietEssay() {
-        return DAO('select articalId,coverPic,title,articallabel from artical where articalClassification = "营养饮食" order by pageViews desc', []);
+        return DAO('select articalId,coverPic,title,articallabel,userId,pageViews from artical where articalClassification = "营养饮食" order by pageViews desc', []);
     };
 
     //获取健身课堂文章数据
     getFitEssay() {
-        return DAO('select articalId,coverPic,title,articallabel from artical where articalClassification = "健身课堂" order by pageViews desc', []);
+        return DAO('select articalId,coverPic,title,articallabel,userId,pageViews from artical where articalClassification = "健身课堂" order by pageViews desc', []);
     };
 
     //获取点击对应文章数据
