@@ -42,5 +42,6 @@ class DB {
     findUsersCount(){
         return DAO('select count(*) as count from users',[])
     }
+
 }
 module.exports = new  DB();
