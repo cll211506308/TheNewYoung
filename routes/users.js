@@ -5,7 +5,6 @@ const suggestionController = require('../controller/suggestionController');
 const articalController = require('../controller/articalController');
 const collectionsController = require('../controller/collectionsController');
 router.prefix('/users');
-
 //登录
 router.post('/login', async (ctx,next) => {
     await usersController.login(ctx,next);
@@ -72,7 +71,7 @@ router.get('/count', async (ctx, next) => {
     }
 ),
 //用户填写调查问卷（将用户身高，体重，体质类型存入body表，表单上传）
-    router.get('/insertbodydatas',async (ctx, next) => {
+    router.post('/insertbodydatas',async (ctx, next) => {
         await bodyController.insertbodydatas(ctx,next);
     })
 /*//用户填写专家身份认证信息（将用户的认证信息存入用户表，多文件上传）

@@ -3,9 +3,8 @@ const DAO = require('../model/DAO');
 class DB{
 
     //发表评论
-    addComment(id){
-        return DAO('insert into comments(postId,userId,comContent,comTime) values (?,?,?,?) ',
-            [id.pId,id.uId,id.content,id.cTime])
+    addComment(com){
+        return DAO('insert into comments(postId,userId,comContent,comTime) values (?,?,?,?)',[com.postId,com.userId,com.comContent,com.comTime])
     }
     //删除评论
     deleteComment(id){
@@ -13,7 +12,7 @@ class DB{
     }
     //查看帖子所有评论
     getComment(id){
-        return DAO('select * from comments where postId = ?',[id])
+        return DAO('select * from comments,users where comments.userId = users.userId and postId = ?',[id])
     }
 }
 

@@ -31,6 +31,10 @@ class DB{
     findPost(){
         return DAO('SELECT * FROM post,users WHERE post.userId = users.userId order by postTime desc',[])
     }
+    //查询单个帖子
+    findPostId(postid){
+        return DAO('SELECT * FROM post,users WHERE post.userId = users.userId and post.postId = ?',[postid])
+    }
     // 发表帖子
     insertPost(posts){
         return DAO('insert into post set userId=?,title=?,postLabel=?,postTime=?,pageViews=?,postContent=?',[posts.userId,posts.title,posts.postLabel,posts.postTime,posts.pageViews,posts.postContent])

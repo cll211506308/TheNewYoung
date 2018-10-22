@@ -2,10 +2,16 @@ const router = require('koa-router')()
 const postController = require('../controller/postController')
 const commentsController = require('../controller/commentsController')
 const likeController = require('../controller/likeController')
+const attentionsController = require('../controller/attentionsController')
 router.prefix('/friends')
 //显示所有帖子
 router.get('/', async (ctx, next) => {
         await postController.findPost(ctx, next)
+    }
+)
+//显示单个帖子
+router.get('/postId', async (ctx, next) => {
+        await postController.findPostId(ctx, next)
     }
 )
 //发表帖子
@@ -36,7 +42,7 @@ router.get('/cancelLike/:articalId',async (ctx,next) => {
     await likeController.cancelLike(ctx,next)
 })
 //添加评论
-router.post('/addComment', async (ctx,next) => {
+router.get('/addComment', async (ctx,next) => {
     await commentsController.addComment(ctx,next)
 })
 //删除评论
@@ -46,6 +52,18 @@ router.get('/deleteComment/:commentsId', async (ctx,next) => {
 //查看所有评论
 router.get('/getCom/:postId', async (ctx,next) => {
     await commentsController.getComment(ctx,next)
+})
+//查询是否已经关注
+router.get('/getAtt', async (ctx,next) => {
+    await attentionsController.getAtt(ctx,next)
+})
+//关注
+router.get('/attention', async (ctx,next) => {
+    await attentionsController.attention(ctx,next)
+})
+//取消关注
+router.get('/delAttention', async (ctx,next) => {
+    await attentionsController.delAttention(ctx,next)
 })
 
 

@@ -4,18 +4,13 @@ module.exports = {
     //添加评论
     addComment: async (ctx,next) => {
         try{
-            let pId = ctx.request.body.postId;
-            let uId = 1;
-            let content = ctx.request.body.comComment;
-            let cTime = new Date().toLocaleString();
-            let all = {
-                pId:pId,
-                uId:uId,
-                content:content,
-                cTime:cTime
-            }
-            await commentsDAO.addComment(all)
-            ctx.body = {'code':200,"message":"ok",data: all}
+            let com = {};
+            com.comTime = new Date();
+            com.postId = ctx.query.postid;
+            com.userId = ctx.query.userid;
+            com.comContent = ctx.query.comcontent;
+            await commentsDAO.addComment(com)
+            ctx.body = {'code':200,"message":"ok",data: []}
         }catch (e){
             ctx.body ={'code':500,"message":"添加失败！！" + e.message,data:[]}
         }
@@ -36,8 +31,6 @@ module.exports = {
     getComment: async (ctx,next) => {
         try{
             let all = ctx.params.postId;
-            console.log(ctx.params)
-            console.log(all)
             let abc =await commentsDAO.getComment(all);
             ctx.body = {'code':200,"message":"ok",data:abc }
         }catch (e){

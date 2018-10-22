@@ -16,7 +16,7 @@ class DB {
     }
     // 获取用户名
     getUserName(userid){
-         return DAO("select username from users where userId  = ?",[userid])
+        return DAO("select username from users where userId  = ?",[userid])
     }
     // 获取头像
     getUserheadpic(userid){
@@ -30,10 +30,10 @@ class DB {
     getUseridentity(userid){
         return DAO("select isExpert from users where userId  = ?",[userid])
     }
-/*   // 认证用户专家身份
-    setIdentity(userid){
-        return DAO('UPDATE users  SET  ;', [userid])
-    }*/
+    /*   // 认证用户专家身份
+        setIdentity(userid){
+            return DAO('UPDATE users  SET  ;', [userid])
+        }*/
     //修改个人信息（昵称，头像，个性签名）
     updateusers(userid){
         return DAO('UPDATE users  SET userName=?,headPic=?,autograph=? where userId = ?;', [userid])

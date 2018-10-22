@@ -47,6 +47,15 @@ module.exports = {
             ctx.body = {'code': 500, "message": "没有获取到帖子 ！！" + e.message, data: []}
         }
     },
+    //查询单个帖子
+    findPostId: async (ctx, next) => {
+        try {
+            let all = await postDAO.findPostId(ctx.query.postid);
+            ctx.body = {'code': 200, "message": "ok", data: all};
+        } catch (e) {
+            ctx.body = {'code': 500, "message": "没有获取到帖子 ！！" + e.message, data: []}
+        }
+    },
     // 发表帖子
     insertPost: async (ctx, next) => {
         let posts = {};
