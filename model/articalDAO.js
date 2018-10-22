@@ -28,12 +28,12 @@ class DB {
 
     //获取搜索相关文章数据
     searchEssay(keys) {
-        return DAO('select articalId,coverPic,title,articalClassification,articalLabel,pageViews from artical where articallabel like "%' + keys + '%" or articalClassification like "%' + keys + '%" or content like "%' + keys + '%"', [])
+        return DAO('select articalId,coverPic,title,articalClassification,articalLabel,pageViews from artical where articallabel like "%' + keys + '%" or articalClassification like "%' + keys + '%" or content like "%' + keys + '%" order by pageViews desc', [])
     };
 
     //获取搜索相关帖子数据
     searchPost(keys) {
-        return DAO('select postId,postPic1,title,postClassification,postLabel,pageViews from post where postLabel like "%'+keys+'%" or postClassification like "%'+keys+'%" or postContent like "%'+keys+'%"', [])
+        return DAO('select postId,postPic1,title,postClassification,postLabel,pageViews from post where postLabel like "%'+keys+'%" or postClassification like "%'+keys+'%" or postContent like "%'+keys+'%" order by pageViews desc', [])
     };
     //删除文章(CLL)
     deleteArtical(articalid){
