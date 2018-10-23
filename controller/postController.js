@@ -74,8 +74,8 @@ module.exports = {
         }
     },
     //删除帖子
-    eletePost:async (ctx, next) => {
-        let userDetails =  await postDAO.eletePost(ctx.params.postlId);
+    deletePost:async (ctx, next) => {
+        let all =  await postDAO.deletePost(ctx.params.postId);
         try{
             ctx.body = {"code":"200","message":"ok,删除成功",data:[]};
         }catch (e) {

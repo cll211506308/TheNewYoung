@@ -3,6 +3,7 @@ const commentsDAO = require('../model/commentsDAO');
 module.exports = {
     //添加评论
     addComment: async (ctx,next) => {
+        console.log(new Date().toLocaleString())
         try{
             let com = {};
             com.comTime = new Date();

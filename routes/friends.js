@@ -19,6 +19,11 @@ router.get('/submit', async (ctx, next) => {
         await postController.insertPost(ctx, next)
     }
 )
+//删除帖子
+router.get('/deletePost/:postId', async (ctx, next) => {
+        await postController.deletePost(ctx, next)
+    }
+)
 //浏览量
 router.get('/uppv/:postId', async (ctx, next) => {
         await postController.updatePostPv(ctx, next)

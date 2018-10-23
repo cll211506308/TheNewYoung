@@ -29,11 +29,11 @@ class DB{
     }
     //查询所有帖子
     findPost(){
-        return DAO('SELECT * FROM post,users WHERE post.userId = users.userId order by postTime desc',[])
+        return DAO('SELECT post.userId,postId,postLabel,title,postContent,userName,pageViews,date_format(postTime,"%Y-%m-%d  %H:%i:%s") as postTime FROM post,users WHERE post.userId = users.userId order by postTime desc',[])
     }
     //查询单个帖子
     findPostId(postid){
-        return DAO('SELECT * FROM post,users WHERE post.userId = users.userId and post.postId = ?',[postid])
+        return DAO('SELECT post.userId,postId,postLabel,title,postContent,userName,pageViews,date_format(postTime,"%Y-%m-%d  %H:%i:%s") as postTime FROM post,users WHERE post.userId = users.userId and post.postId = ?',[postid])
     }
     // 发表帖子
     insertPost(posts){
@@ -41,7 +41,7 @@ class DB{
     }
     //删除帖子
     deletePost(id){
-        return DAO('delete from posts where id = ?',[id])
+        return DAO('delete from post where postId = ?',[id])
     }
 
 
@@ -52,7 +52,7 @@ class DB{
 
     //查看关注人的帖子
     getLikeuserPost(userId){
-        return DAO('select * from post,users WHERE post.userId = users.userId and post.userId =any(select attentionedUserId from attentions where userId =?)',[userId])
+        return DAO('select  post.userId,postId,postLabel,title,postContent,userName,pageViews,date_format(postTime,"%Y-%m-%d  %H:%i:%s") as postTime from post,users WHERE post.userId = users.userId and post.userId =any(select attentionedUserId from attentions where userId =?)',[userId])
     }
 }
 
