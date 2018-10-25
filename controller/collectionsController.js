@@ -1,10 +1,19 @@
 const collectionsDAO = require('../model/collectionsDAO');
 
 module.exports = {
+    //查询是否已经收藏
+    getCol:async (ctx, next) => {
+        let all =  await collectionsDAO. getCol(ctx.query.userId,ctx.query.articalId);
+        try{
+            ctx.body = {"code":"200","message":"ok,关注成功",data:all};
+        }catch (e) {
+            ctx.body = {"code":"500","message":"服务器错误",data:[]};
+        }
+    },
     //添加收藏
     addCollection:async (ctx,next)=>{
-        let userId = ctx.request.body.userId;
-        let articalId = ctx.request.body.articalId;
+        let userId = ctx.query.userId;
+        let articalId = ctx.query.articalId;
         let colTime = new Date();
         let collections = {
             userId:userId,
@@ -20,11 +29,11 @@ module.exports = {
     },
     //取消收藏
     delCollection:async (ctx,next)=>{
-        try {
-            let cancelCol = await collectionsDAO.delCollection(ctx.request.body.collectionsId);
-            ctx.body = {"code":200,"message":"取消成功",data:[]}
-        }catch (err) {
-            ctx.body = {"code":500,"message":err.message,data:[]}
+        let all =  await collectionsDAO. delCollection(ctx.query.userId,ctx.query.articalId);
+        try{
+            ctx.body = {"code":"200","message":"取消关注成功：",data:[]};
+        }catch (e) {
+            ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
     //获取用户收藏的文章

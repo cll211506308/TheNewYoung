@@ -104,4 +104,14 @@ module.exports = {
             ctx.body = {'code': 500, "message": "没有查到相应文章！！" + e.message, data: []};
         }
     },
+    //浏览量
+    updateArticalPv: async (ctx, next) => {
+        let all = ctx.params.articalId;
+        let abc =await articalDAO.updateArticalPv(all);
+        try{
+            ctx.body = {"code":"200","message":"ok,成功",data:[]};
+        }catch (e) {
+            ctx.body = {"code":"500","message":"服务器错误",data:[]};
+        }
+    },
 }

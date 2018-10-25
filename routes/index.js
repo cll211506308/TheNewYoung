@@ -1,6 +1,7 @@
 const router = require('koa-router')()
 const articalController = require('../controller/articalController')
 const postController = require('../controller/postController')
+const collectionsController = require('../controller/collectionsController')
 
 //显示首页上的文章数据
 router.get('/', async (ctx, next) => {
@@ -27,6 +28,23 @@ router.get('/hotPost/relativePost/:postid', async (ctx, next) => {
         await postController.getRelativePost(ctx, next)
     }
 )
+//收藏文章
+router.get('/addCol', async (ctx,next) => {
+    await collectionsController.addCollection(ctx,next);
+})
+//取消收藏
+router.get('/delCol', async (ctx,next) => {
+    await collectionsController.delCollection(ctx,next);
+})
+//浏览量
+router.get('/upPv/:articalId', async (ctx, next) => {
+        await articalController.updateArticalPv(ctx, next)
+    }
+)
+//查询是否已经收藏文章
+router.get('/getCol', async (ctx,next) => {
+    await collectionsController.getCol(ctx,next)
+})
 
 
 module.exports = router

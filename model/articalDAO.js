@@ -56,6 +56,11 @@ class DB {
     getFitRank() {
         return DAO('select title from artical where articalClassification = "健身课堂" order by pageViews desc', []);
     };
+
+    //浏览量
+    updateArticalPv(articalId){
+        return DAO('update artical set pageViews = pageViews + 1 where articalId = ?',[articalId])
+    }
     
 }
 

@@ -1,14 +1,18 @@
 const DAO = require('../model/DAO');
 
 class DB{
+    //查询是否已收藏
+    getCol(userId,articalId){
+        return DAO("select * from collections where userId = ? and articalId = ? ",[userId,articalId])
+    }
     //添加收藏
     addCollection(keys){
         return DAO("insert into collections(userId,articalId,colTime) values (?,?,?)",
             [keys.userId,keys.articalId,keys.colTime])
     }
     //取消收藏
-    delCollection(id){
-        return DAO("delete from collections where collectionsId = ?",[id])
+    delCollection(userId,articalId){
+        return DAO("delete from collections where userId = ? and articalId = ?",[userId,articalId])
     }
     //获取用户收藏的文章
     getUserCollections(userid){
