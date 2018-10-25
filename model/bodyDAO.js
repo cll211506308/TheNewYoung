@@ -11,8 +11,8 @@ class DB {
     }
     //用户填写调查问卷（将用户身高，体重，体质类型存入体质表）
     insertbodydatas(datas){
-        return DAO('insert into body(userId,putTime,userHeight,userWeight,usertotal,bodyClass,bodyclassContent) values(?,?,?,?,?,?,?)',
-            [ datas.userId,datas.putTime,datas.userHeight,datas.userWeight,datas.usertotal,datas.bodyClass,datas.bodyclassContent])
+        return DAO('insert into body(userId,putTime,userHeight,userWeight,usertotal,bodyClass,bodyclassContent,BMI,suggestions) values(?,?,?,?,?,?,?,?,?)',
+            [ datas.userId,datas.putTime,datas.userHeight,datas.userWeight,datas.usertotal,datas.bodyClass,datas.bodyclassContent,datas.BMI,datas.suggestions])
     }
 }
 module.exports = new  DB();
