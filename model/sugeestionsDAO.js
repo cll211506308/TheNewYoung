@@ -6,7 +6,7 @@ class DB {
     }
     //显示建议
     showUsersuggestions(userid){
-        return DAO("select sugcontent from bigsuggestions,suggestions where bigsuggestions.bigsuggestionsid = suggestions.bigsuggestionsid and suggestions.userid = 1 ",[userid])
+        return DAO("select suggestions from body where userid = ? order by putTime desc",[userid])
     }
 }
 module.exports = new  DB();

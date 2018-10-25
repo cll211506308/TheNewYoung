@@ -11,7 +11,7 @@ module.exports = {
     },
     //显示建议
     showUsersuggestions:async (ctx, next) => {
-        let userDetails =  await usersDAO. showUsersuggestions(ctx.params.userId);
+        let userDetails =  await usersDAO.showUsersuggestions(ctx.params.userId);
         try{
             ctx.body = {"code":"200","message":"ok,建议内容：",data:userDetails};
         }catch (e) {

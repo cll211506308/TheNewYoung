@@ -16,7 +16,7 @@ class DB{
     }
     //获取用户收藏的文章
     getUserCollections(userid){
-        return DAO("select title,colTime from collections,artical where collections.articalId = artical.articalId and collections.userId = ?",[userid])
+        return DAO("select title,date_format(colTime,\"%Y-%m-%d  %H:%i:%s\") as colTime from collections,artical where collections.articalId = artical.articalId and collections.userId = ?",[userid])
     }
     //获取用户发布过的文章
     getUserPublish(userid){

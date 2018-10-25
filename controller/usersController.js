@@ -100,18 +100,4 @@ module.exports = {
             ctx.body = {'code': 500, "message": "没有获取到用户 ！！" + e.message, data: []}
         }
     },
-
-
-    /*  // 认证用户专家身份
-       setIdentity: async (ctx,next) => {
-           let users = {};
-
-           try{
-               let user = await usersDAO.setIdentity(users);
-               ctx.body = {"code":"200","message":"ok",data:users};
-           }catch (e){
-               ctx.body = {"code":"500","message":"服务器错误"+e.message,data:[]};
-           }
-       },*/
-
 }
