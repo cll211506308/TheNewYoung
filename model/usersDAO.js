@@ -7,8 +7,8 @@ class DB {
     }
     //注册个人信息
     setUp(users){
-        return DAO('insert into users (username,userPwd,registerTime) values (?,?,?)',
-            [users.userName,users.userPwd,users.registerTime])
+        return DAO('insert into users (userName,userPwd,registerTime,headPic) values (?,?,?,?)',
+            [users.userName,users.userPwd,users.registerTime,users.headPic])
     }
     //判断用户名是否存在
     judgeName(userName) {
@@ -16,7 +16,7 @@ class DB {
     }
     // 获取用户名
     getUserName(userid){
-        return DAO("select username from users where userId  = ?",[userid])
+        return DAO("select * from users where userId  = ?",[userid])
     }
     // 获取头像
     getUserheadpic(userid){

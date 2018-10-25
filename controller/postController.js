@@ -1,4 +1,8 @@
 const postDAO = require('../model/postDAO');
+const usersDAO = require('../model/usersDAO');
+const formidable = require("formidable");
+const path = require("path");
+const fs = require('fs')
 
 module.exports = {
     getPost: async (ctx, next) => {
@@ -103,5 +107,47 @@ module.exports = {
         } catch (e) {
             ctx.body = {"code": "500", "message": "没有获取到帖子 ！"+ e.message, data: []}
         }
+    },
+
+    //上传头像
+    upTouxiang: async (ctx, next) => {
+
+        var form = new formidable.IncomingForm();
+        form.uploadDir = path.join(__dirname,'../public/images')    //设置文件存放路径
+        // form.multiples = true;  //设置上传多文件
+         form.parse(ctx.req, function (err, fields, files) {
+            console.log(files)
+            //根据files.filename.name获取上传文件名，执行后续写入数据库的操作
+            // console.log(fields)
+            //根据fileds.mydata获取上传表单元素的数据，执行写入数据库的操作
+            if(err){
+                tx.body='上传失败'
+            }
+
+            if(err) throw err;
+            var time = Math.ceil(Math.random()*1000);
+            var oldpath = files.filename.path;
+            var newpath = path.join(path.dirname(oldpath),time + files.filename.name);
+             console.log(newpath.slice(25))
+             console.log(fields.userName)
+
+             let users = {};
+             users.userName = fields.userName;
+             users.userPwd = fields.userPwd;
+             users.registerTime = new Date();
+             users.headPic = newpath.slice(25);
+             let all = usersDAO.setUp(users);
+
+            fs.rename(oldpath,newpath,(err)=>{
+                if(err) throw err;
+                // res.writeHead(200,{"Content-Type":"text/html;charset=UTF8"});
+                // res.end('图片上传并改名成功！');
+
+            })
+
+        })
+        ctx.body= 1
+
+
     }
 }

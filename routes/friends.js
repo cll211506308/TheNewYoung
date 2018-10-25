@@ -3,6 +3,7 @@ const postController = require('../controller/postController')
 const commentsController = require('../controller/commentsController')
 const likeController = require('../controller/likeController')
 const attentionsController = require('../controller/attentionsController')
+
 router.prefix('/friends')
 //显示所有帖子
 router.get('/', async (ctx, next) => {
@@ -70,7 +71,10 @@ router.get('/attention', async (ctx,next) => {
 router.get('/delAttention', async (ctx,next) => {
     await attentionsController.delAttention(ctx,next)
 })
-
+//头像
+router.post('/upTouxiang',async function (ctx, next) {
+    await postController.upTouxiang(ctx, next)
+})
 
 
 module.exports = router;
