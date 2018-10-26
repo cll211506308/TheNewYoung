@@ -100,4 +100,13 @@ module.exports = {
             ctx.body = {'code': 500, "message": "没有获取到用户 ！！" + e.message, data: []}
         }
     },
+    //获取用户关注的人
+    getUserAtt: async (ctx, next) => {
+        try {
+            let all = await usersDAO.getUserAtt(ctx.params.userId);
+            ctx.body = {'code': 200, "message": "ok", data: all};
+        } catch (e) {
+            ctx.body = {'code': 500, "message": "没有获取到用户 ！！" + e.message, data: []}
+        }
+    }
 }

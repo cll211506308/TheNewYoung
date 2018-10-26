@@ -65,6 +65,10 @@ router.get('/collections/:userId', async (ctx, next) => {
 router.get('/publish/:userId',  async (ctx, next) => {
     await collectionsController.getUserPublish(ctx,next);
 });
+//查看用户关注的人
+router.get('/att/:userId',  async (ctx, next) => {
+    await usersController.getUserAtt(ctx,next);
+});
 //查询所有用户数量
 router.get('/count', async (ctx, next) => {
         await usersController.findUsersCount(ctx, next)

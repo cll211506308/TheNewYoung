@@ -33,7 +33,7 @@ class DB{
     }
     //查询单个帖子
     findPostId(postid){
-        return DAO('SELECT post.userId,postId,postLabel,title,postContent,userName,pageViews,date_format(postTime,"%Y-%m-%d  %H:%i:%s") as postTime FROM post,users WHERE post.userId = users.userId and post.postId = ?',[postid])
+        return DAO('SELECT users.headPic,post.userId,postId,postLabel,title,postContent,userName,pageViews,date_format(postTime,"%Y-%m-%d  %H:%i:%s") as postTime FROM post,users WHERE post.userId = users.userId and post.postId = ?',[postid])
     }
     // 发表帖子
     insertPost(posts){

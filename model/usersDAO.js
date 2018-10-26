@@ -18,6 +18,10 @@ class DB {
     getUserName(userid){
         return DAO("select * from users where userId  = ?",[userid])
     }
+    // 获取用户关注的人
+    getUserAtt(userid){
+        return DAO("select attentionedUserId from attentions where userId  = ?",[userid])
+    }
     // 获取头像
     getUserheadpic(userid){
         return DAO("select headPic from users where userId  = ?",[userid])
