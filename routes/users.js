@@ -41,7 +41,7 @@ router.post('/updateusers/:userId', async (ctx,next) => {
 router.get('/deleteartical/:articalId', async (ctx,next) => {
     await articalController.deleteartical(ctx,next);
 });
-//获取用户体重变化
+//获取用户体质数据变化
 router.get('/weight/:userId', async (ctx, next) => {
     await bodyController.getUserWeight(ctx,next);
 });
