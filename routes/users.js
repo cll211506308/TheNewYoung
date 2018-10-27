@@ -78,11 +78,4 @@ router.get('/count', async (ctx, next) => {
     router.post('/insertbodydatas',async (ctx, next) => {
         await bodyController.insertbodydatas(ctx,next);
     })
-/*//用户填写专家身份认证信息（将用户的认证信息存入用户表，多文件上传）
-router.post('/setidentity/:userId', async (ctx,next) => {
-    await usersController.setIdentity(ctx,next)
-});*/
-
-//将提取的建议插入用户的建议表
-//增加发布的文章(富文本编辑)
 module.exports = router;
