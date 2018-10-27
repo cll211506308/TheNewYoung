@@ -12,7 +12,7 @@ class DB{
     }
     //查看帖子所有评论
     getComment(id){
-        return DAO('select comments.commentsId,comments.userId,comContent,userName,date_format(comTime,"%Y-%m-%d  %H:%i:%s") as comTime from comments,users where comments.userId = users.userId and postId = ?',[id])
+        return DAO('select users.headPic,comments.commentsId,comments.userId,comContent,userName,date_format(comTime,"%Y-%m-%d  %H:%i:%s") as comTime from comments,users where comments.userId = users.userId and postId = ?',[id])
     }
 }
 
