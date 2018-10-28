@@ -1,4 +1,5 @@
 const articalDAO = require('../model/articalDAO');
+const classesDAO = require('../model/classesDAO');
 
 module.exports = {
     getEssay: async (ctx, next) => {
@@ -50,60 +51,6 @@ module.exports = {
         }
     },
 
-    //营养美食文章
-    getDietEssay: async (ctx, next) => {
-        try {
-            let Diet = await articalDAO.getDietEssay();
-            ctx.body = {'code': 200, "message": "ok", data: Diet};
-        } catch (e) {
-            ctx.body = {'code': 500, "message": "没有查到相应文章！！" + e.message, data: []};
-        }
-    },
-    //健身课堂文章
-    getFitEssay: async (ctx, next) => {
-        try {
-            let Fit = await articalDAO.getFitEssay();
-            ctx.body = {'code': 200, "message": "ok", data: Fit};
-        } catch (e) {
-            ctx.body = {'code': 500, "message": "没有查到相应文章！！" + e.message, data: []};
-        }
-    },
-    //养生堂文章
-    getYangEssay: async (ctx, next) => {
-        try {
-            let Yang = await articalDAO.getYangEssay();
-            ctx.body = {'code': 200, "message": "ok", data: Yang};
-        } catch (e) {
-            ctx.body = {'code': 500, "message": "没有查到相应文章！！" + e.message, data: []};
-        }
-    },
-    //营养美食热门文章排行
-    getDietRank: async (ctx, next) => {
-        try {
-            let DRank = await articalDAO.getDietRank();
-            ctx.body = {'code': 200, "message": "ok", data: DRank};
-        } catch (e) {
-            ctx.body = {'code': 500, "message": "没有查到相应文章！！" + e.message, data: []};
-        }
-    },
-    //健身课堂热门文章排行
-    getFitRank: async (ctx, next) => {
-        try {
-            let FRank = await articalDAO.getFitRank();
-            ctx.body = {'code': 200, "message": "ok", data: FRank};
-        } catch (e) {
-            ctx.body = {'code': 500, "message": "没有查到相应文章！！" + e.message, data: []};
-        }
-    },
-    //养生堂热门文章排行
-    getYangRank: async (ctx, next) => {
-        try {
-            let YRank = await articalDAO.getYangRank();
-            ctx.body = {'code': 200, "message": "ok", data: YRank};
-        } catch (e) {
-            ctx.body = {'code': 500, "message": "没有查到相应文章！！" + e.message, data: []};
-        }
-    },
     //浏览量
     updateArticalPv: async (ctx, next) => {
         let all = ctx.params.articalId;
@@ -112,6 +59,35 @@ module.exports = {
             ctx.body = {"code":"200","message":"ok,成功",data:[]};
         }catch (e) {
             ctx.body = {"code":"500","message":"服务器错误",data:[]};
+        }
+    },
+
+    //分类
+    getClasses: async (ctx, next) => {
+        try {
+            let fit1 = await classesDAO.getSomeFit1();
+            let fit2 = await classesDAO.getSomeFit2();
+            let fit3 = await classesDAO.getSomeFit3();
+            let fit4 = await classesDAO.getSomeFit4();
+            let fit5 = await classesDAO.getSomeFit5();
+            let foods1 = await classesDAO.getSomeFoods1();
+            let foods2 = await classesDAO.getSomeFoods2();
+            let foods3 = await classesDAO.getSomeFoods3();
+            let foods4 = await classesDAO.getSomeFoods4();
+            let foods5 = await classesDAO.getSomeFoods5();
+            let young1 = await classesDAO.getSomeYoungLife1();
+            let young2 = await classesDAO.getSomeYoungLife2();
+            let young3 = await classesDAO.getSomeYoungLife3();
+            let young4 = await classesDAO.getSomeYoungLife4();
+            let young5 = await classesDAO.getSomeYoungLife5();
+            let all = {
+                fit1:fit1, fit2:fit2, fit3:fit3, fit4:fit4, fit5:fit5,
+                foods1:foods1, foods2:foods2, foods3:foods3, foods4:foods4, foods5:foods5,
+                young1:young1, young2:young2, young3:young3, young4:young4, young5:young5,
+            };
+            ctx.body = {'code': 200, "message": "ok", data: all};
+        } catch (e) {
+            ctx.body = {'code': 500, "message": "没有查到相应文章！！" + e.message, data: []};
         }
     },
 }

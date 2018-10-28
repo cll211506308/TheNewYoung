@@ -3,9 +3,9 @@ const articalController = require('../controller/articalController');
 const collectionsController = require('../controller/collectionsController');
 router.prefix('/foods');
 
-//显示所有美食文章数据
+//美食文章数据，排行
 router.get('/', async (ctx, next) => {
-    await articalController.getDietEssay(ctx, next)
+    await articalController.getEssay(ctx, next)
 })
 //显示点击相应链接获取的文章数据
 router.get('/relativeEssay/:articalid', async (ctx, next) => {
@@ -19,9 +19,9 @@ router.post('/addCol', async (ctx,next) => {
 router.post('/delCol', async (ctx,next) => {
     await collectionsController.delCollection(ctx,next);
 })
-//美食文章排行榜
-router.get('/foodsrank', async (ctx, next) => {
-    await articalController.getDietRank(ctx, next)
+//美食文章分类
+router.get('/foodsclass', async (ctx, next) => {
+    await articalController.getClasses(ctx, next);
 })
 
 module.exports = router;
