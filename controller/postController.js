@@ -121,7 +121,7 @@ module.exports = {
             // console.log(fields)
             //根据fileds.mydata获取上传表单元素的数据，执行写入数据库的操作
             if(err){
-                tx.body='上传失败'
+                ctx.body='上传失败'
             }
 
             if(err) throw err;

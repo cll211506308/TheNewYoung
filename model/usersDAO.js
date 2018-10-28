@@ -38,9 +38,13 @@ class DB {
         setIdentity(userid){
             return DAO('UPDATE users  SET  ;', [userid])
         }*/
-    //修改个人信息（昵称，头像，个性签名）
-    updateusers(userid){
-        return DAO('UPDATE users  SET userName=?,headPic=?,autograph=? where userId = ?;', [userid])
+    //修改个人信息（不改头像）
+    updateusers(user){
+        return DAO('UPDATE users  SET userName=?,autograph=?,userPwd=?,sex=? where userId = ?;', [user.userName,user.autograph,user.userPwd,user.sex,user.userId])
+    }
+    //修改个人信息（改头像）
+    upTouxiang(users){
+        return DAO('UPDATE users  SET headPic=?,userName=?,autograph=?,userPwd=?,sex=? where userId = ?;', [users.headPic,users.userName,users.autograph,users.userPwd,users.sex,users.userId])
     }
     //获取用户总数
     findUsersCount(){

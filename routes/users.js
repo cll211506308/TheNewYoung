@@ -33,10 +33,15 @@ router.get('/autograph/:userId', async (ctx, next) => {
 router.get('/identity/:userId', async (ctx, next) => {
     await usersController.getUseridentity(ctx,next);
 });
-//修改个人信息（昵称，头像，个性签名）
-router.post('/updateusers/:userId', async (ctx,next) => {
+//修改个人信息（不改头像）
+router.post('/updateusers', async (ctx,next) => {
     await usersController.updateusers(ctx,next);
 });
+//修改个人信息,有头像
+router.post('/upTouxiang',async function (ctx, next) {
+    await usersController.upTouxiang(ctx, next)
+})
+
 //删除发布过的文章
 router.get('/deleteartical/:articalId', async (ctx,next) => {
     await articalController.deleteartical(ctx,next);

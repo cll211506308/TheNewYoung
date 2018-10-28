@@ -1,5 +1,9 @@
 const usersDAO = require('../model/usersDAO');
 var crypto = require('crypto')
+const formidable = require("formidable");
+const path = require("path");
+const fs = require('fs')
+
 
 module.exports = {
     //登录
@@ -78,19 +82,67 @@ module.exports = {
             ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
-    //修改个人信息（昵称，头像，个性签名）
+    //修改个人信息（不改头像）
     updateusers: async (ctx, next) => {
-        let users ={};
-        users.userName = ctx.request.body.userName;
-        users.headpic =  ctx.request.body.headpic;
-        users.autograph = ctx.request.body.autograph;
+        let user ={};
+        user.userName = ctx.request.body.userName;
+        user.userPwd = ctx.request.body.userPwd;
+        user.autograph = ctx.request.body.autograph;
+        user.userId = ctx.request.body.userId;
+        user.birthday =  ctx.request.body.birthday;
+        user.sex = ctx.request.body.sex;
+        console.log(ctx.request.body)
         try{
-            await usersDAO.updateusers(users);
-            ctx.body = {"code":"200","message":"ok,修改成功",data:users};
+            let all = await usersDAO.updateusers(user);
+            ctx.body = {"code":"200","message":"ok,修改成功",data:all};
         }catch (e) {
             ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
+    //修改个人信息（有头像）
+    upTouxiang: async (ctx, next) => {
+
+        var form = new formidable.IncomingForm();
+        form.uploadDir = path.join(__dirname,'../public/images')    //设置文件存放路径
+        // form.multiples = true;  //设置上传多文件
+        form.parse(ctx.req, function (err, fields, files) {
+            console.log(files)
+            //根据files.filename.name获取上传文件名，执行后续写入数据库的操作
+            console.log(fields)
+            //根据fileds.mydata获取上传表单元素的数据，执行写入数据库的操作
+            if(err){
+                ctx.body='上传失败'
+            }
+
+            if(err) throw err;
+            var time = Math.ceil(Math.random()*1000);
+            var oldpath = files.filename.path;
+            var newpath = path.join(path.dirname(oldpath),time + files.filename.name);
+
+            let users = {};
+            users.userName = fields.userName;
+            users.userPwd = fields.userPwd;
+            users.autograph = fields.autograph;
+            users.userId = fields.userId;
+            users.birthday = fields.birthday;
+            users.sex = fields.sex;
+            users.headPic = newpath.slice(25);
+            let all = usersDAO.upTouxiang(users);
+
+            fs.rename(oldpath,newpath,(err)=>{
+                if(err) throw err;
+                // res.writeHead(200,{"Content-Type":"text/html;charset=UTF8"});
+                // res.end('图片上传并改名成功！');
+
+            })
+
+        })
+        ctx.body= 1
+
+
+    },
+
+
     //获取用户总数
     findUsersCount: async (ctx, next) => {
         try {
