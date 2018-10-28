@@ -3,9 +3,9 @@ const articalController = require('../controller/articalController');
 const collectionsController = require('../controller/collectionsController');
 router.prefix('/youngLife');
 
-//显示所有养生文章数据
+//养生文章数据，排行
 router.get('/', async (ctx, next) => {
-    await articalController.getYangEssay(ctx, next)
+    await articalController.getEssay(ctx, next)
 })
 //显示点击相应链接获取的文章数据
 router.get('/relativeEssay/:articalid', async (ctx, next) => {
@@ -19,9 +19,9 @@ router.post('/addCol', async (ctx,next) => {
 router.post('/delCol', async (ctx,next) => {
     await collectionsController.delCollection(ctx,next);
 })
-//养生文章排行榜
-router.get('/youngrank', async (ctx, next) => {
-    await articalController.getYangRank(ctx, next)
+//养生文章分类
+router.get('/youngclass', async (ctx, next) => {
+    await articalController.getClasses(ctx, next);
 })
 
 module.exports = router;
