@@ -23,7 +23,7 @@ class DB {
 
     //获取点击对应文章数据
     getRelativeEssay(id) {
-        return DAO('select title,articalLabel,articalClassification,content,contentPic1,contentPic2,contentPic3,contentPic4,contentPic5,pageViews,articalClassification,artical.userId,autograph,userName from artical,users where artical.userId = users.userId and articalId = ?', [id])
+        return DAO('select coverPic,title,articalLabel,articalClassification,content,contentPic1,contentPic2,contentPic3,contentPic4,contentPic5,pageViews,articalClassification,artical.userId,autograph,userName from artical,users where artical.userId = users.userId and articalId = ?', [id])
     };
 
     //获取搜索相关文章数据
