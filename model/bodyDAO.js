@@ -3,7 +3,7 @@ var DAO = require('../model/DAO');
 class DB {
     //获取用户的体重
     getUserWeight(userid){
-        return DAO("select userweight,userheight,usertotal,BMI,puttime from body where userid = ? order by putTime DESC",[userid])
+        return DAO("select userweight,userheight,usertotal,BMI,date_format(puttime,\"%Y-%m-%d\") as puttime from body where userid = ? order by putTime DESC",[userid])
     }
     //显示用户体质
     getUserbodyclass(userid){
