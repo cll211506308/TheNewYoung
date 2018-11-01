@@ -8,6 +8,11 @@ router.get('/', async (ctx, next) => {
         await articalController.getEssay(ctx, next)
     }
 )
+//解决报错404
+router.get('/undefined', async (ctx, next) => {
+    ctx.body = {'code':200};
+    }
+)
 //显示搜索之后的文章数据
 router.get('/search/:keys', async (ctx, next) => {
         await articalController.searchEssay(ctx, next)
