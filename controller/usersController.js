@@ -5,17 +5,17 @@ const path = require("path");
 const fs = require('fs')
 
 
+
 module.exports = {
     //登录
     login: async (ctx,next) => {
+
+        const hash = crypto.createHash('md5');
+        hash.update( ctx.request.body.userPwd);
+        let pwd = hash.digest('hex')
         let user = {};
         user.userName = ctx.request.body.userName;
-        user.userPwd = ctx.request.body.userPwd;
-        // let pwd = ctx.request.body.userPwd;
-        // const hash = crypto.createHash('md5');
-        // hash.update(pwd);
-        // let pwdMd5 = hash.digest('hex');
-        // user.userPwd = pwdMd5;
+        user.userPwd =pwd;
         let all = await usersDAO.login(user);
         try{
             ctx.body = {"code":"200","message":"ok",data:all};
@@ -23,20 +23,7 @@ module.exports = {
             ctx.body = {"code":"500","message":"服务器错误",data:[]};
         }
     },
-    //注册个人信息
-    setUp: async (ctx,next) => {
-        let users = {};
-        users.userName = ctx.request.body.userName;
-        users.userPwd = ctx.request.body.userPwd;
-        users.registerTime = new Date();
-        console.log(users)
-        try{
-            let user = await usersDAO.setUp(users);
-            ctx.body = {"code":"200","message":"ok",data:users};
-        }catch (e){
-            ctx.body = {"code":"500","message":"服务器错误"+e.message,data:[]};
-        }
-    },
+
     //判断用户名存在不
     judgeName: async (ctx, next) => {
         let all =  await usersDAO.judgeName(ctx.params.userName);
@@ -84,9 +71,13 @@ module.exports = {
     },
     //修改个人信息（不改头像）
     updateusers: async (ctx, next) => {
+
+        const hash = crypto.createHash('md5');
+        hash.update( ctx.request.body.userPwd);
+        let pwd = hash.digest('hex')
         let user ={};
         user.userName = ctx.request.body.userName;
-        user.userPwd = ctx.request.body.userPwd;
+        user.userPwd = pwd;
         user.autograph = ctx.request.body.autograph;
         user.userId = ctx.request.body.userId;
         user.birthday =  ctx.request.body.birthday;
@@ -119,9 +110,12 @@ module.exports = {
             var oldpath = files.filename.path;
             var newpath = path.join(path.dirname(oldpath),time + files.filename.name);
 
+            const hash = crypto.createHash('md5');
+            hash.update( fields.userPwd);
+            let pwd = hash.digest('hex')
             let users = {};
             users.userName = fields.userName;
-            users.userPwd = fields.userPwd;
+            users.userPwd = pwd;
             users.autograph = fields.autograph;
             users.userId = fields.userId;
             users.birthday = fields.birthday;

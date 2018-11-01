@@ -3,6 +3,7 @@ const usersDAO = require('../model/usersDAO');
 const formidable = require("formidable");
 const path = require("path");
 const fs = require('fs')
+const crypto = require('crypto')
 
 module.exports = {
     getPost: async (ctx, next) => {
@@ -131,9 +132,12 @@ module.exports = {
              console.log(newpath.slice(25))
              console.log(fields.userName)
 
+             const hash = crypto.createHash('md5');
+             hash.update(fields.userPwd);
+             let pwd = hash.digest('hex')
              let users = {};
              users.userName = fields.userName;
-             users.userPwd = fields.userPwd;
+             users.userPwd = pwd;
              users.registerTime = new Date();
              users.headPic = newpath.slice(25);
              let all = usersDAO.setUp(users);
